@@ -1,12 +1,12 @@
 ##Disclaimer##
 - This is my first JavaScript project.
-- This is my first google speech project.
-- This is my first arduino project.
-- This is my first node.js project.
+- This is my first Google Speech project.
+- This is my first Arduino project.
+- This is my first Node.js project.
 - This is my first Git project.
 - This is my first GitHib project.
 
-Get the picture?  I'm a newbie.  But I'm here to learn so if you have any comments or suggestions, let me know!
+Get the picture?  I'm a complete newbie.  But I'm here to learn so if you have any comments or suggestions, let me know!
 
 ##Installation##
 1. Install node.js.
