@@ -8,10 +8,15 @@
 
 Get the picture?  I'm a complete newbie.  But I'm here to learn so if you have any comments or suggestions, let me know!
 
+##Prerequisites##
+- A recent version of the Chrome browser.
+- An internet connection.
+- A Pololu Zumo.
+- Node.js / npm installed on your machine.
+
 ##Installation##
-1. Install node.js.
-2. Download source files.
-3. Run ‘npm install’ from source root.
+1. Download the contents of this repo.
+2. Run ‘npm install’ from source root to get the required node modules.
 
 ##Running##
 1. Connect Arduino Zumo
