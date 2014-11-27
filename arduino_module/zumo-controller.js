@@ -21,7 +21,7 @@ board.on("ready", function() {
      socket.on('data', function (data) {
 
         switch ( data.toString()){
-        case 'engage':
+        case 'forwards':
           speed=100;
           motor1.rev( speed );
           motor2.rev( speed );
