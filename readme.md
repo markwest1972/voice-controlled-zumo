@@ -11,7 +11,7 @@ Get the picture?  I'm a complete newbie.  But I'm here to learn so if you have a
 ##Prerequisites##
 - A recent version of the Chrome browser.
 - An internet connection.
-- A Pololu Zumo.
+- A Pololu Zumo with Standard Firmata installed.
 - Node.js / npm installed on your machine.
 
 ##Installation##
