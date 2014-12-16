@@ -1,12 +1,15 @@
 var five = require("johnny-five"), board;
 
 board = new five.Board({
-  debug: true
+  debug: true,
+  port: "/dev/cu.MarkyBot-DevB"
+
 });
+
 
 board.on("ready", function() {
 
-  var speed = 80;
+  var speed = 150;
 
   motor1 = new five.Motor([10, 8]);
   motor2 = new five.Motor([9, 7]);
@@ -22,17 +25,9 @@ board.on("ready", function() {
      socket.on('data', function (data) {
 
         switch ( data.toString()){
-        case 'faster':
-          speed+=20;
-          console.log(' => Up: ' + speed);
+        case 'go':
           motor1.rev( speed );
           motor2.rev( speed );
-          break;
-        case 'break':
-          speed+=20;
-          console.log(' => Down: ' + speed);
-          motor1.fwd( speed );
-          motor2.fwd( speed );
           break;
         case 'turn left':
           console.log(' => Left: ');
@@ -48,10 +43,6 @@ board.on("ready", function() {
           console.log(' => Stopping...');
           motor1.stop();
           motor2.stop();
-          break;
-        case 'reset':
-          console.log(' => Speed to 80');
-          speed = 80;
           break;
         default:
           console.log('Ignoring command: ' + data);

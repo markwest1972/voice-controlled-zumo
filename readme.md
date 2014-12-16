@@ -12,11 +12,12 @@ Get the picture?  I'm a complete newbie.  But I'm here to learn so if you have a
 1. Install node.js.
 2. Download source files.
 3. Run ‘npm install’ from source root.
+4. Note that due to the nature of Johnny-Five, Zumo needs to be connected to PC (for example via Cable, Bluetooth or WiFi).
 
 ##Running##
 1. Connect Arduino Zumo
 2. Run node arduino_module/zumo-controller.js
-3. Run node speech_module/arduino_speech.js
+3. Run node speech_module/index.js
 
 ##Usage##
 1. Connect to localhost:8080
@@ -24,11 +25,7 @@ Get the picture?  I'm a complete newbie.  But I'm here to learn so if you have a
 3. Have fun!
 
 ##ToDo##
-0. Ensure everything works after initial refactoring.
 1. Use continuous speech recognition.
 2. General refactoring and in line documentation.
-3. Update vocabulary.
-4. Speed up.
-5. Add bluetooth / WIFI support.
-6. Tests.
-7. And so on....
+3. Tests.
+4. And so on....
