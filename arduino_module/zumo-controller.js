@@ -9,11 +9,7 @@ board = new five.Board({
 
 board.on("ready", function() {
 
-<<<<<<< HEAD
   var speed = 150;
-=======
-  var speed = 0;
->>>>>>> FETCH_HEAD
 
   motor1 = new five.Motor([10, 8]);
   motor2 = new five.Motor([9, 7]);
@@ -27,29 +23,12 @@ board.on("ready", function() {
 
      socket.on('data', function (data) {
 
-        switch ( data.toString()){
-<<<<<<< HEAD
+      switch ( data.toString()){
+
         case 'go':
           motor1.rev( speed );
           motor2.rev( speed );
           break;
-=======
-        case 'forwards':
-          speed=100;
-          motor1.rev( speed );
-          motor2.rev( speed );
-          break;
-        case 'slower':
-          speed-=20;
-          motor1.rev( speed );
-          motor2.rev( speed );
-          break;
-        case 'faster':
-          speed+=20;
-          motor1.rev( speed );
-          motor2.rev( speed );
-          break;
->>>>>>> FETCH_HEAD
         case 'turn left':
           motor1.fwd( speed * 0.5 );
           motor2.rev( speed * 0.5 );
@@ -62,18 +41,9 @@ board.on("ready", function() {
           motor1.stop();
           motor2.stop();
           break;
-<<<<<<< HEAD
-=======
-        case 'reset':
-          speed = 80;
-          motor1.rev( speed );
-          motor2.rev( speed );
-          break;
->>>>>>> FETCH_HEAD
         default:
           console.log('Ignoring command: ' + data);
         }
-
         console.log(data.toString());
      });
 
