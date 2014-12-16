@@ -2,7 +2,7 @@ var five = require("johnny-five"), board;
 
 board = new five.Board({
   debug: true,
-  port: "/dev/cu.MarkyBot-DevB"
+  port: "/dev/cu.MarkyBot-DevB" // remove this if you are using a cable, or amend it if using WiFi or Bluetooth
 
 });
 
