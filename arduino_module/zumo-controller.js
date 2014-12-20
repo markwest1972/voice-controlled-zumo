@@ -1,4 +1,5 @@
 var five = require("johnny-five"), board;
+var songs = require("j5-songs");
 
 board = new five.Board({
   debug: true,
@@ -11,11 +12,13 @@ board.on("ready", function() {
 
   var speed = 150;
 
+  var piezo = new five.Piezo(3);
+
   motor1 = new five.Motor([10, 8]);
   motor2 = new five.Motor([9, 7]);
 
   board.repl.inject({
-  	lmotor: motor1, 
+  	lmotor: motor1,
   	rmotor: motor2,
   });
 
@@ -23,7 +26,7 @@ board.on("ready", function() {
 
      socket.on('data', function (data) {
 
-      switch ( data.toString()){
+      switch ( data.toString().trim() ){
 
         case 'go':
           motor1.rev( speed );
@@ -38,13 +41,19 @@ board.on("ready", function() {
           motor2.fwd( speed * 0.5 );
           break;
         case 'disengage':
-          motor1.stop();
-          motor2.stop();
+          motor1.rev(0);
+          motor2.rev(0);
+          break;
+        case 'sing':
+          motor1.rev(0);
+          motor2.rev(0);
+          var song = songs.load('do-re-mi');
+          piezo.play(song);
           break;
         default:
           console.log('Ignoring command: ' + data);
         }
-        console.log(data.toString());
+        console.log("*"+data.toString()+"*");
      });
 
   }).listen(9090);

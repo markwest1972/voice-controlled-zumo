@@ -5,6 +5,7 @@
   "dependencies": {
     "express": "^4.10.2",
     "johnny-five": "^0.8.29",
-    "socket.io": "^1.2.1"
+    "socket.io": "^1.2.1",
+    "j5-songs": "^0.0.6"
   }
 }

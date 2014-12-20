@@ -26,7 +26,7 @@
 
 <p>
 <div id="results" align="center">
-    <span id="final_span" class="final"></span>
+    <span id="text_span" class="final"></span>
 </div>
 </p>
 
@@ -41,7 +41,9 @@
 
     var socket = io();
     var recognizing = false;
-    var final_transcript = '';
+    var transcript = '';
+    var last_command = '';
+    var command = '';
 
     if (('webkitSpeechRecognition' in window)) {
 
@@ -49,10 +51,10 @@
 
         // Are we performing continuous recognition or not?
         // If this is false, we need to trigger a restart at onend
-        recognition.continuous = false;
+        recognition.continuous = true;
 
         // Do we want interim results or not (true means yes)
-        recognition.interimResults = false;
+        recognition.interimResults = true;
 
         // On start of Voice Recognition attempt
         recognition.onstart = function() {
@@ -69,12 +71,30 @@
             console.log("Speech recognition returned.", event);
 
             for (var i = event.resultIndex; i < event.results.length; ++i) {
+
+                // Pick up the command
+                command = event.results[i][0].transcript ;
+
+                // Mark the command as interim or final
                 if (event.results[i].isFinal) {
-                    final_transcript += event.results[i][0].transcript + '<br>';
-                    socket.emit('command', event.results[i][0].transcript);
+                    transcript += command + ' (f) <br>';
+                }else{
+                    transcript += command + ' (i) <br>';
                 }
+
+                // If the latest command is different from the previous, send it to the robot
+                if (command != last_command){
+                    socket.emit('command', event.results[i][0].transcript);
+                    transcript += "Sending " + command + " to Robot, Last Command Sent was " + last_command + ". <br>";
+                }else{
+                    transcript += "Not sending " + command + " to Robot, Last Command Sent was " + last_command + ". <br>";
+                }
+
+                // Ensure that the last command is stored for the next round
+                last_command = command;
+
             }
-            final_span.innerHTML = final_transcript;
+            text_span.innerHTML = transcript;
         }
 
         // Handling Errors
@@ -95,7 +115,7 @@
             recognizing = false;
             if (errorCode.innerHTML == ''){
                 start_img.src = 'images/arnold-ready.jpg';
-                recognition.start();
+                //recognition.start();
             }
         }
 
