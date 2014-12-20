@@ -3,6 +3,8 @@
 
 <!-- Start HTML Code -->
 
+<body bgcolor='black' text='white'>
+
 <title>SKYNET R&D</title>
 
 <h1 align="center">SKYNET SYSTEMS : T-1 DEMO</h1>
@@ -29,6 +31,7 @@
     <span id="text_span" class="final"></span>
 </div>
 </p>
+</body>
 
 <!-- End HTML Code -->
 
@@ -75,19 +78,19 @@
                 // Pick up the command
                 command = event.results[i][0].transcript ;
 
-                // Mark the command as interim or final
-                if (event.results[i].isFinal) {
-                    transcript += '<b>' + command + '</b><br>';
-                }else{
-                    transcript += command + '<br>';
-                }
-
                 // If the latest command is different from the previous, send it to the robot
                 if (command != last_command){
-                    //socket.emit('command', event.results[i][0].transcript);
-                    transcript += "<font color='gray'><i>Sending '" + command + "' to Robot, Last Command Sent was '" + last_command + "'. </i></font><br>";
+                    socket.emit('command', event.results[i][0].transcript);
+                    transcript = "<font color='gray'><i>Sending '" + command + "' to Robot, Last Command Sent was '" + last_command + "'. </i></font><br>" + transcript;
                 }else{
-                    transcript += "<font color='gray'><i>Not sending '" + command + "' to Robot, Last Command Sent was '" + last_command + "'. </i></font><br>";
+                    transcript = "<font color='gray'><i>Not sending '" + command + "' to Robot, Last Command Sent was '" + last_command + "'. </i></font><br>" + transcript;
+                }
+
+                 // Mark the command as interim or final
+                if (event.results[i].isFinal) {
+                    transcript = '<b>' + command + '</b><br>' + transcript;
+                }else{
+                    transcript = "<font color='iceberg'>" +  command + "</font><br>" + transcript;
                 }
 
                 // Ensure that the last command is stored for the next round
@@ -130,7 +133,7 @@
         recognition.stop();
         return;
       }
-      final_transcript = '';
+      transcript = '';
       recognition.lang = 'en-GB'
       recognition.start();
       ignore_onend = false;
