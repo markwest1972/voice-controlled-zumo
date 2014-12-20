@@ -77,17 +77,17 @@
 
                 // Mark the command as interim or final
                 if (event.results[i].isFinal) {
-                    transcript += command + ' (f) <br>';
+                    transcript += '<b>' + command + '</b><br>';
                 }else{
-                    transcript += command + ' (i) <br>';
+                    transcript += command + '<br>';
                 }
 
                 // If the latest command is different from the previous, send it to the robot
                 if (command != last_command){
-                    socket.emit('command', event.results[i][0].transcript);
-                    transcript += "Sending " + command + " to Robot, Last Command Sent was " + last_command + ". <br>";
+                    //socket.emit('command', event.results[i][0].transcript);
+                    transcript += "<font color='gray'><i>Sending '" + command + "' to Robot, Last Command Sent was '" + last_command + "'. </i></font><br>";
                 }else{
-                    transcript += "Not sending " + command + " to Robot, Last Command Sent was " + last_command + ". <br>";
+                    transcript += "<font color='gray'><i>Not sending '" + command + "' to Robot, Last Command Sent was '" + last_command + "'. </i></font><br>";
                 }
 
                 // Ensure that the last command is stored for the next round
