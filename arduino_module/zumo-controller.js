@@ -1,5 +1,5 @@
 var five = require("johnny-five"), board;
-var songs = require("j5-songs");
+//var songs = require("j5-songs");
 
 board = new five.Board({
   debug: true,
@@ -10,7 +10,7 @@ board = new five.Board({
 
 board.on("ready", function() {
 
-  var speed = 150;
+  var speed = 125;
 
   var piezo = new five.Piezo(3);
 
@@ -40,16 +40,21 @@ board.on("ready", function() {
           motor1.rev( speed * 0.5 );
           motor2.fwd( speed * 0.5 );
           break;
-        case 'disengage':
-          motor1.rev(0);
-          motor2.rev(0);
+        case 'reverse':
+          motor1.fwd( speed );
+          motor2.fwd( speed );
           break;
-        case 'sing':
+        case 'disengage':
+          motor1.stop();
+          motor2.stop();
+          break;
+
+        /*case 'sing':
           motor1.rev(0);
           motor2.rev(0);
           var song = songs.load('do-re-mi');
           piezo.play(song);
-          break;
+          break;*/
         default:
           console.log('Ignoring command: ' + data);
         }
