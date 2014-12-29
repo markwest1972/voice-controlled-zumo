@@ -1,3 +1,6 @@
+## Robot in Action ##
+https://vimeo.com/115565297
+
 ##Disclaimer##
 - This is my first JavaScript project.
 - This is my first Google Speech project.
@@ -31,7 +34,7 @@ Get the picture?  I'm a complete newbie.  But I'm here to learn so if you have a
 3. Have fun!
 
 ##ToDo##
-1. Use continuous speech recognition.
-2. General refactoring and in line documentation.
-3. Tests.
-4. And so on....
+1. Improve speed of speech recognition.
+2. Add camera.
+3. Add obstacle detection.
+4. General refactoring and in line documentation.
