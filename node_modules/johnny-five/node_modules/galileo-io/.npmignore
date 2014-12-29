@@ -1,0 +1,8 @@
+node_modules/
+test/
+utils/
+watch.js
+*.py
+*.pyc
+*.pdf
+*.tgz
