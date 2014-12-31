@@ -38,3 +38,5 @@ Get the picture?  I'm a complete newbie.  But I'm here to learn so if you have a
 2. Add camera.
 3. Add obstacle detection.
 4. General refactoring and in line documentation.
+5. Add middleware (MQTT and node.red) to make this a real IOT demo.
+6. Pass the Turing Test.
