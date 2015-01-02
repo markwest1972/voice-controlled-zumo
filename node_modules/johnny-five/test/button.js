@@ -11,12 +11,11 @@ var MockFirmata = require("./mock-firmata"),
     io: new MockFirmata()
   });
 
-exports["Button"] = {
+exports["Button, Digital Pin"] = {
   setUp: function(done) {
     this.digitalRead = sinon.spy(board.io, "digitalRead");
     this.button = new Button({
       pin: 8,
-      freq: 5,
       board: board
     });
 
@@ -88,19 +87,101 @@ exports["Button"] = {
     callback(this.button.upValue);
   },
 
-  release: function(test) {
+  hold: function(test) {
+    var clock = sinon.useFakeTimers();
+    var callback = this.digitalRead.args[0][1];
+    test.expect(1);
+
+    //fake timers dont play nice with __.debounce
+    this.button.on("hold", function() {
+      test.ok(true);
+      clock.restore();
+      test.done();
+    });
+    callback(this.button.downValue);
+    clock.tick(500);
+    callback(this.button.upValue);
+  },
+};
+
+exports["Button, Analog Pin"] = {
+  setUp: function(done) {
+    this.digitalRead = sinon.spy(board.io, "digitalRead");
+    this.button = new Button({
+      pin: "A0",
+      board: board
+    });
+
+    this.proto = [];
+
+    this.instance = [{
+      name: "isPullup"
+    }, {
+      name: "invert"
+    }, {
+      name: "downValue"
+    }, {
+      name: "upValue"
+    }, {
+      name: "holdtime"
+    }, {
+      name: "isDown"
+    }];
+
+    done();
+  },
+
+  tearDown: function(done) {
+    this.digitalRead.restore();
+    done();
+  },
+  pinTranslation: function(test) {
+    test.expect(1);
+    test.equal(this.button.pin, 14);
+    test.done();
+  },
+  down: function(test) {
 
     var callback = this.digitalRead.args[0][1];
     test.expect(1);
 
     //fake timers dont play nice with __.debounce
-    this.button.on("release", function() {
+    this.button.on("down", function() {
 
+      test.ok(true);
+      test.done();
+    });
+
+    callback(this.button.downValue);
+  },
+
+  up: function(test) {
+
+    var callback = this.digitalRead.args[0][1];
+    test.expect(1);
+
+    //fake timers dont play nice with __.debounce
+    this.button.on("up", function() {
       test.ok(true);
       test.done();
     });
     callback(this.button.downValue);
     callback(this.button.upValue);
-  }
+  },
 
+  hold: function(test) {
+    var clock = sinon.useFakeTimers();
+    var callback = this.digitalRead.args[0][1];
+    test.expect(1);
+
+    //fake timers dont play nice with __.debounce
+    this.button.on("hold", function() {
+      test.ok(true);
+      clock.restore();
+      test.done();
+    });
+    callback(this.button.downValue);
+    clock.tick(500);
+    callback(this.button.upValue);
+  },
 };

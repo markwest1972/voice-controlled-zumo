@@ -1,10 +1,9 @@
 var five = require("johnny-five"), board;
-//var songs = require("j5-songs");
 
 board = new five.Board({
   debug: true,
   port: "/dev/cu.MarkyBot-DevB" // remove this if you are using a cable, or amend it if using WiFi or Bluetooth
-
+  //port: "/dev/cu.Bluetooth-Modem"
 });
 
 
@@ -12,7 +11,7 @@ board.on("ready", function() {
 
   var speed = 125;
 
-  var piezo = new five.Piezo(3);
+  //var piezo = new five.Piezo(3);
 
   motor1 = new five.Motor([10, 8]);
   motor2 = new five.Motor([9, 7]);

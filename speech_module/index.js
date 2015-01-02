@@ -1,3 +1,12 @@
+/**
+ * Google Chrome will repeatedly ask for permission to access the microphone, unless
+ * HTTPS is being used.  This slows down the speech recognition process, which
+ * slows down the reaction time of the robot.
+ *
+ * This file sets off a HTTP server.  To avoid the aforementioned problem, try using the
+ * indexHTTP.js server instead.
+ */
+
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
@@ -30,5 +39,5 @@ io.on('connection', function(socket){
 
 // HTTP Listener
 http.listen(8080, function(){
-  console.log('listening on *:8080');
+  console.log('HTTP listening on *:8080');
 });

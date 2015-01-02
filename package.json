@@ -1,11 +1,11 @@
 {
   "name": "terminator-1-lite",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Voice Controlled Arduino",
   "dependencies": {
-    "express": "^4.10.2",
     "johnny-five": "^0.8.29",
-    "socket.io": "^1.2.1",
-    "j5-songs": "^0.0.6"
+    "pem": "^1.4.4",
+    "express": "^4.10.6",
+    "socket.io": "^1.2.1"
   }
 }
