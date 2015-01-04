@@ -56,15 +56,20 @@ io.on('connection', function(socket){
   // Commands received from HTML page
   socket.on('command', function(msg){
 
-    // Log command is desired
+    // Log command if desired
     if (Boolean(log)){
-      console.log('"Received Command from HTML page [: ' + msg + ']');
+      console.log('Received Command from HTML page [: ' + msg + ']');
     }
 
     // Sends command further to ardino module via TCP connection running on 9090
     netSocket.connect(9090);
     netSocket.write(msg);
     netSocket.end();
+
+    // Log command if desired
+    if (Boolean(log)){
+      console.log('Forwarded Command to Zumo [: ' + msg + ']');
+    }
 
     // Will be used for sending Ack back to Web Page
     //io.emit('command', msg);

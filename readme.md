@@ -30,8 +30,12 @@ Get the picture?  I'm a complete newbie.  But I'm here to learn so if you have a
 
 ##Usage##
 1. Connect to localhost:8080
-2. Click Arnold
-3. Have fun!
+2. Click Arnold.
+3. See arduino_module/zumo_controller.js for valid commands.
+4. Have fun!
+
+##Known Problems##
+1. Crashes when commands sent from webserver to arduino exceed a certain amount or are over a certain length (see http://stackoverflow.com/questions/27769842/write-after-end-error-in-node-js-webserver).
 
 ##ToDo##
 1. Improve speed of speech recognition.

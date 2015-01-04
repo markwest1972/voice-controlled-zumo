@@ -24,7 +24,7 @@ var board = new five.Board({
 board.on("ready", function() {
 
   // Speed can be anything from 0 to 255
-  var SPEED = 125;
+  var SPEED = 75;
   var currentSpeed = SPEED;
   var log = true;
   var command = "";
@@ -71,30 +71,30 @@ board.on("ready", function() {
 
         // Turning is always done at the same speed
         case 'turn left':
-          motor1.fwd( SPEED * 0.5 );
-          motor2.rev( SPEED * 0.5 );
+          motor1.fwd( SPEED * 0.75 );
+          motor2.rev( SPEED * 0.75 );
           break;
 
         // Turning is always done at the same speed
         case 'turn right':
-          motor1.rev( SPEED * 0.5 );
-          motor2.fwd( SPEED * 0.5 );
+          motor1.rev( SPEED * 0.75 );
+          motor2.fwd( SPEED * 0.75 );
           break;
 
         // Accelerate by increasing current speed by 10, will also interrupt
         // a turn or start motor if already stopped.
-        case 'faster':
+        case 'speed up':
           currentSpeed += 10;
-          motor1.fwd( currentSpeed );
-          motor2.fwd( currentSpeed );
+          motor1.rev( currentSpeed );
+          motor2.rev( currentSpeed );
           break;
 
         // Decelerate by increasing current speed by 10, will also interrupt
         // a turn or start motor if already stopped.
-        case 'slower':
+        case 'slow down':
           currentSpeed -= 10;
-          motor1.fwd( currentSpeed );
-          motor2.fwd( currentSpeed );
+          motor1.rev( currentSpeed );
+          motor2.rev( currentSpeed );
           break;
 
         // Full stop.
