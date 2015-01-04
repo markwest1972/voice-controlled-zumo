@@ -1,4 +1,6 @@
-
+// -----------------------------------------//
+// Configuration of JY-MCU Bluetooth Module //
+// -----------------------------------------//
 
 // Copied from https://github.com/rwaldron/johnny-five/wiki/JY-MCU-Bluetooth-Serial-Port-Module-Notes
 

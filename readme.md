@@ -25,8 +25,8 @@ Get the picture?  I'm a complete newbie.  But I'm here to learn so if you have a
 
 ##Running##
 1. Connect Arduino Zumo
-2. Run node arduino_module/zumo-controller.js
-3. Run node speech_module/index.js
+2. Run node arduino_module/zumo_controller.js
+3. Run node speech_module/web_server_HTTPS.js
 
 ##Usage##
 1. Connect to localhost:8080
@@ -38,5 +38,6 @@ Get the picture?  I'm a complete newbie.  But I'm here to learn so if you have a
 2. Add camera.
 3. Add obstacle detection.
 4. General refactoring and in line documentation.
-5. Add middleware (MQTT and node.red) to make this a real IOT demo.
-6. Pass the Turing Test.
+5. Code review and more refactoring.
+6. Add middleware (MQTT and node.red) to make this a real IOT demo.
+7. Pass the Turing Test.
