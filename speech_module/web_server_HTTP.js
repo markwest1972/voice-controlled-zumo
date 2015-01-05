@@ -9,7 +9,7 @@
   Google Chrome repeatedly asks for permission to access the microphone.  To
   avoid this, use the web_server_HTTPS.js file instead.
 
-  Use "node web_server_HTTP.js" to run this Web Server.
+  Run this Webserver with the command "node web_server_HTTP.js".
 
 */
 
@@ -43,8 +43,7 @@ io.on('connection', function(socket){
 
     // Sends command further to ardino module via TCP connection running on 9090
     netSocket.connect(9090);
-    netSocket.write(msg);
-    netSocket.end();
+    netSocket.write(msg, function(err) { netSocket.end(); });
 
     // Will be used for sending Ack back to Web Page
     //io.emit('command', msg);

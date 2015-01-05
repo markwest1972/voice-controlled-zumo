@@ -15,7 +15,7 @@
   certificate, but you don't have to worry  about that for the sake of this
   example.
 
-  Use "node web_server_HTTPS.js" to run this Web Server.
+  Run this Webserver with the command "node web_server_HTTPS.js".
 
 */
 var express = require('express');
@@ -63,8 +63,7 @@ io.on('connection', function(socket){
 
     // Sends command further to ardino module via TCP connection running on 9090
     netSocket.connect(9090);
-    netSocket.write(msg);
-    netSocket.end();
+    netSocket.write(msg, function(err) { netSocket.end(); });
 
     // Log command if desired
     if (Boolean(log)){

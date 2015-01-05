@@ -2,11 +2,11 @@
   Johnny-Five interface to the Arduino Zumo
   -----------------------------------------
 
-  Currently communicates with the Web Site through a TCP listener
-  running on 9090.  This will be eventually replaced by some kind of
-  message broker for a more robust solution.
+  Currently communicates with the arduino_speech webpage through a TCP listener
+  running on 9090.  This will possibly be replaced by a message broker for a
+  more robust solution.
 
-  Use "node zumo_controller.js" to run this.
+  Run this with the command "node zumo_controller.js".
 
 */
 
@@ -17,7 +17,7 @@ var five = require("johnny-five");
 // Note that port should be updated to reflect the name of your Bluetooth
 // connect or completely removed if you are using a USB Cable.
 var board = new five.Board({
-  port: "/dev/cu.MarkyBot-DevB"
+  //port: "/dev/cu.MarkyBot-DevB"
 });
 
 // On board initialisation, perform the following
@@ -54,11 +54,6 @@ board.on("ready", function() {
       // Trim and tidy up command
       command = data.toString().trim();
 
-      // Log data to be processed if logging is switched on
-      if (Boolean(log)){
-        console.log("Processing Command ["+command+"]");
-      }
-
       // Trim and tidy up string
       switch ( command ){
 
@@ -67,18 +62,27 @@ board.on("ready", function() {
           currentSpeed = SPEED;
           motor1.rev( currentSpeed );
           motor2.rev( currentSpeed );
+          if (Boolean(log)){
+            console.log("Executing Command ["+command+"], Speed ["+currentSpeed+"]");
+          }
           break;
 
         // Turning is always done at the same speed
         case 'turn left':
           motor1.fwd( SPEED * 0.75 );
           motor2.rev( SPEED * 0.75 );
+          if (Boolean(log)){
+            console.log("Executing Command ["+command+"]");
+          }
           break;
 
         // Turning is always done at the same speed
         case 'turn right':
           motor1.rev( SPEED * 0.75 );
           motor2.fwd( SPEED * 0.75 );
+          if (Boolean(log)){
+            console.log("Executing Command ["+command+"]");
+          }
           break;
 
         // Accelerate by increasing current speed by 10, will also interrupt
@@ -87,6 +91,9 @@ board.on("ready", function() {
           currentSpeed += 10;
           motor1.rev( currentSpeed );
           motor2.rev( currentSpeed );
+          if (Boolean(log)){
+            console.log("Executing Command ["+command+"], Speed ["+currentSpeed+"]");
+          }
           break;
 
         // Decelerate by increasing current speed by 10, will also interrupt
@@ -95,6 +102,9 @@ board.on("ready", function() {
           currentSpeed -= 10;
           motor1.rev( currentSpeed );
           motor2.rev( currentSpeed );
+          if (Boolean(log)){
+            console.log("Executing Command ["+command+"], Speed ["+currentSpeed+"]");
+          }
           break;
 
         // Full stop.
