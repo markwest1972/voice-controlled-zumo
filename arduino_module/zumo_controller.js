@@ -34,10 +34,56 @@ board.on("ready", function() {
   motor1 = new five.Motor([10, 8]);
   motor2 = new five.Motor([9, 7]);
 
+  // List of commands
+  var ExecuteCommands = {
+
+    // Go straight forwards.  Also resets speed to standard
+    'go': function() {
+      currentSpeed = SPEED;
+      motor1.rev( currentSpeed );
+      motor2.rev( currentSpeed );
+    },
+
+    // Turning is always done at the same speed
+    'turn left': function() {
+      motor1.fwd( SPEED * 0.75 );
+      motor2.rev( SPEED * 0.75 );
+    },
+
+    // Turning is always done at the same speed
+    'turn right': function() {
+      motor1.rev( SPEED * 0.75 );
+      motor2.fwd( SPEED * 0.75 );
+    },
+
+    // Accelerate by increasing current speed by 10, will also interrupt
+    // a turn or start motor if already stopped.
+    'speed up': function() {
+      currentSpeed += 10;
+      motor1.rev( currentSpeed );
+      motor2.rev( currentSpeed );
+    },
+
+    // Decelerate by increasing current speed by 10, will also interrupt
+    // a turn or start motor if already stopped.
+    'slow down': function() {
+      currentSpeed -= 10;
+      motor1.rev( currentSpeed );
+      motor2.rev( currentSpeed );
+    },
+
+    // Full stop.
+    'disengage': function() {
+      motor1.stop();
+      motor2.stop();
+    }
+
+  };
+
   // Optionally add the motors to REPL, so they can be controlled manually
   /*board.repl.inject({
-  	lmotor: motor1,
-  	rmotor: motor2,
+    lmotor: motor1,
+    rmotor: motor2,
   });*/
 
   // Using the "net" library, create a listener on port 9090
@@ -59,61 +105,18 @@ board.on("ready", function() {
         console.log("Processing Command ["+command+"]");
       }
 
-      // Trim and tidy up string
-      switch ( command ){
-
-        // Go straight forwards.  Also resets speed to standard
-        case 'go':
-          currentSpeed = SPEED;
-          motor1.rev( currentSpeed );
-          motor2.rev( currentSpeed );
-          break;
-
-        // Turning is always done at the same speed
-        case 'turn left':
-          motor1.fwd( SPEED * 0.75 );
-          motor2.rev( SPEED * 0.75 );
-          break;
-
-        // Turning is always done at the same speed
-        case 'turn right':
-          motor1.rev( SPEED * 0.75 );
-          motor2.fwd( SPEED * 0.75 );
-          break;
-
-        // Accelerate by increasing current speed by 10, will also interrupt
-        // a turn or start motor if already stopped.
-        case 'speed up':
-          currentSpeed += 10;
-          motor1.rev( currentSpeed );
-          motor2.rev( currentSpeed );
-          break;
-
-        // Decelerate by increasing current speed by 10, will also interrupt
-        // a turn or start motor if already stopped.
-        case 'slow down':
-          currentSpeed -= 10;
-          motor1.rev( currentSpeed );
-          motor2.rev( currentSpeed );
-          break;
-
-        // Full stop.
-        case 'disengage':
-          motor1.stop();
-          motor2.stop();
-          break;
-
-        // If command doesn't match any of the above
-        default:
-
-          // Log ignored commands (if logging is switched on)
-          if (Boolean(log)){
-            console.log("Ignoring Command ["+command+"]");
-          }
-
+      if(commands.indexOf(command) == 0)
+      {
+        // Log ignored commands (if logging is switched on)
+        if (Boolean(log)){
+          console.log("Ignoring Command ["+command+"]");
         }
-
-     });
+      }
+      else
+      {
+        ExecuteCommands[command];
+      }
+    });
 
   }).listen(9090);
 
