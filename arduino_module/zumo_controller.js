@@ -105,7 +105,7 @@ board.on("ready", function() {
         console.log("Processing Command ["+command+"]");
       }
 
-      if(commands.indexOf(command) == 0)
+      if(ExecuteCommands.indexOf(command) == 0)
       {
         // Log ignored commands (if logging is switched on)
         if (Boolean(log)){
