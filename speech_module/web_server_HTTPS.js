@@ -64,6 +64,7 @@ io.on('connection', function(socket){
     // Sends command further to ardino module via TCP connection running on 9090
     netSocket.connect(9090);
     netSocket.write(msg, function(err) { netSocket.end(); });
+    // Note netSocket ends after write complete (callback)
 
     // Log command if desired
     if (Boolean(log)){
