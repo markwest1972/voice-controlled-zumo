@@ -44,6 +44,7 @@ io.on('connection', function(socket){
     // Sends command further to ardino module via TCP connection running on 9090
     netSocket.connect(9090);
     netSocket.write(msg, function(err) { netSocket.end(); });
+    // Note netSocket ends after write complete (callback)
 
     // Will be used for sending Ack back to Web Page
     //io.emit('command', msg);

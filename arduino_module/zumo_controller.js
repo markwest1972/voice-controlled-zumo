@@ -17,7 +17,7 @@ var five = require("johnny-five");
 // Note that port should be updated to reflect the name of your Bluetooth
 // connect or completely removed if you are using a USB Cable.
 var board = new five.Board({
-  //port: "/dev/cu.MarkyBot-DevB"
+  port: "/dev/cu.MarkyBot-DevB"
 });
 
 // On board initialisation, perform the following
