@@ -69,8 +69,8 @@ board.on("ready", function() {
 
         // Turning is always done at the same speed
         case 'turn left':
-          motor1.fwd( SPEED * 0.75 );
-          motor2.rev( SPEED * 0.75 );
+          motor1.fwd( SPEED );
+          motor2.rev( SPEED );
           if (Boolean(log)){
             console.log("Executing Command ["+command+"]");
           }
@@ -82,6 +82,15 @@ board.on("ready", function() {
           motor2.fwd( SPEED * 0.75 );
           if (Boolean(log)){
             console.log("Executing Command ["+command+"]");
+          }
+          break;
+
+        // Full speed spin
+        case 'spin around':
+          motor1.fwd( 255 );
+          motor2.rev( 255 );
+          if (Boolean(log)){
+            console.log("Executing Command ["+command+"], Speed ["+currentSpeed+"]");
           }
           break;
 
