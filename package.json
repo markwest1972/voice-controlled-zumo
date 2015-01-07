@@ -4,8 +4,8 @@
   "description": "Voice Controlled Arduino",
   "dependencies": {
     "johnny-five": "^0.8.29",
-    "pem": "^1.4.4",
     "express": "^4.10.6",
-    "socket.io": "^1.2.1"
+    "socket.io": "^1.2.1",
+    "mqtt": "^0.3.13"
   }
 }
