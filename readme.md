@@ -36,6 +36,7 @@ Johnny-Five, MQTT, Arduino, npm, JavaScript, Google Speech, Zumo.
 ##Troubleshooting##
 1. Make sure that the Zumo is connected.
 2. This solution uses a Public MQTT Server, make sure that it is up and running (see the MQTTserver variable ib the ).
+3. If you have problems with the HTTPS Server, try running speech_module/web_server_HTTP.js instead.
 
 ##ToDo##
 1. Improve speed of speech recognition.
