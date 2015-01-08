@@ -24,9 +24,7 @@
 var express = require('express');
 var mqtt = require('mqtt');
 var app = express();
-var httpapp = express();
 var fs = require('fs');
-var http = require('http').createServer(httpapp);
 var options = {
   key: fs.readFileSync('cert/key.pem'),
   cert: fs.readFileSync('cert/cert.pem'),
@@ -43,11 +41,6 @@ var mqttPort = "1883";
 var mqttServer = "broker.mqtt-dashboard.com";
 var mqttTopic = "zumo/controller/commands";
 var mqttClient = mqtt.createClient(mqttPort, mqttServer);
-
-// Redirects all traffic to HTTP to HTTPS Server
-httpapp.get('*',function(req,res){
-    res.redirect('https://127.0.0.1:8080'+req.url)
-})
 
 // Required to serve the static files (i.e. images)
 app.use(express.static(__dirname));
