@@ -1,4 +1,6 @@
 ##Summary##
+This project facilitates the control of a Ardunio based Robot via voice commands through a web page.
+
 The project consists of two modules:
 - The **arduino_module** subscribes to a MQTT Topic and sends commands onwards to the Zumo via Johnny-Five.
 - The **speech_module** consists of a webserver that (a) serves a web page that parses speech to text and (b) publishes the resulting text to the same MQTT Topic.
@@ -51,6 +53,6 @@ Johnny-Five, MQTT, Arduino, npm, JavaScript, Google Speech, Zumo.
 5. Consider adding a video camera.
 6. Code review.
 7. Improve npm usage.
-8. Feedback to webpage.
+8. Feedback to web page.
 9. Pass the Turing Test.
 10. Blog.
