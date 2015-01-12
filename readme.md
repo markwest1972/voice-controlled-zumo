@@ -11,6 +11,11 @@ Note that I am currently using the Public MQTT Broker described [here](http://ww
 
 This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
+##Further Reading##
+1. [My Blogpost about Google Speech Recognition](http://blogg.bouvet.no/2014/11/11/getting-started-with-html5-speech-recognition-on-google-chrome/).
+2. [My Blogpost about Getting Started with Johnny-Five](http://blogg.bouvet.no/2014/12/30/learning-javascript-and-arduino-programming-with-johnny-five/).
+3. [My Blogpost about This Project] (http://blogg.bouvet.no/2015/01/11/voice-controlling-a-robot-using-arduino-node-js-mqtt-websockets-johnny-five-and-html5-speech-recognition/).
+
 ##Disclaimer##
 I'm new to ALL the technologies used here (including GIT).  If you have suggestions for improvements, they will be gratefully received!
 
@@ -43,11 +48,6 @@ Johnny-Five, MQTT, Arduino, npm, JavaScript, Google Speech, Zumo.
 1. Make sure that the Zumo is connected.
 2. This solution uses a Public MQTT Server, make sure that it is up and running (see the MQTTserver variable in the source code - there are two brokers you can currently choose from).
 3. If you have problems with the HTTPS Server, try running **node speech_module/web_server_HTTP.js** instead.
-
-##Further Reading##
-1. [My Blogpost about Google Speech Recognition](http://blogg.bouvet.no/2014/11/11/getting-started-with-html5-speech-recognition-on-google-chrome/).
-2. [My Blogpost about Getting Started with Johnny-Five](http://blogg.bouvet.no/2014/12/30/learning-javascript-and-arduino-programming-with-johnny-five/).
-3. [My Blogpost about This Project] (http://blogg.bouvet.no/2015/01/11/voice-controlling-a-robot-using-arduino-node-js-mqtt-websockets-johnny-five-and-html5-speech-recognition/).
 
 ##ToDo##
 1. Improve speed of speech recognition.
