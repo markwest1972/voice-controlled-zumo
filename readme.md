@@ -45,7 +45,7 @@ Johnny-Five, MQTT, Arduino, npm, JavaScript, Google Speech, Zumo.
 ##Further Reading##
 1. [My Blogpost about Google Speech Recognition](http://blogg.bouvet.no/2014/11/11/getting-started-with-html5-speech-recognition-on-google-chrome/).
 2. [My Blogpost about Getting Started with Johnny-Five](http://blogg.bouvet.no/2014/12/30/learning-javascript-and-arduino-programming-with-johnny-five/).
-3. My Blogpost about this project (Coming Soon).
+3. [My Blogpost about this project] (http://blogg.bouvet.no/2015/01/11/voice-controlling-a-robot-using-arduino-node-js-mqtt-websockets-johnny-five-and-html5-speech-recognition/).
 
 ##ToDo##
 1. Improve speed of speech recognition.
@@ -57,4 +57,4 @@ Johnny-Five, MQTT, Arduino, npm, JavaScript, Google Speech, Zumo.
 7. Improve npm usage.
 8. Feedback to web page.
 9. Pass the Turing Test.
-10. Blog.
+10. Add "Last Will And Testament" to MQTT Broker so that disconnect pushes "disengage" to robot.
