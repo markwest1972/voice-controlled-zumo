@@ -1,9 +1,11 @@
 ##Summary##
 This project facilitates the control of a Ardunio based Robot via voice commands through a web page.
 
-The project consists of two modules:
+The bulk of this project consists of these two modules:
 - The **arduino_module** subscribes to a MQTT Topic and sends commands onwards to the Zumo via Johnny-Five.
 - The **speech_module** consists of a webserver that (a) serves a web page that parses speech to text and (b) publishes the resulting text to the same MQTT Topic.
+
+The other project modules are used for configuration of the Bluetooth module and MQTT Testing.
 
 Note that I am currently using the Public MQTT Broker described [here](http://www.hivemq.com/showcase/public-mqtt-broker/).  I'm using this as it's free and doesn't require a sign up, but it is occasionally down.
 
