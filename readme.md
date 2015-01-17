@@ -50,13 +50,12 @@ Johnny-Five, MQTT, Arduino, npm, JavaScript, Google Speech, Zumo.
 3. If you have problems with the HTTPS Server, try running **node speech_module/web_server_HTTP.js** instead.
 
 ##ToDo##
-1. Improve speed of speech recognition.
-2. Add support for systemwide variables.
-3. Add temprature sensor.
-4. Add obstacle detection.
-5. Consider adding a video camera.
-6. Code review.
-7. Improve npm usage.
-8. Feedback to web page.
-9. Pass the Turing Test.
-10. Add "Last Will And Testament" to MQTT Broker so that disconnect pushes "disengage" to robot.
+1. Branch version 1.
+2. Start version 2 with a big refactor (based on Code Reviews I have received).
+3. Add temprature sensor with feedback to Webpage.
+4. Add collision detection / onstacle avoidance.
+5. Investigate adding a video camera.
+6. Improve npm usage.
+7. Add "Last Will And Testament" to MQTT Broker so that disconnect pushes "disengage" to robot.
+8. Pass the Turing Test.
+9. "Open the Pod Bay doors Hall".
