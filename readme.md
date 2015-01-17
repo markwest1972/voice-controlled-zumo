@@ -7,7 +7,7 @@ The bulk of this project consists of these two modules:
 
 The other project modules are used for configuration of the Bluetooth module and MQTT Testing.
 
-Note that I am currently using the Public MQTT Broker described [here](http://www.hivemq.com/showcase/public-mqtt-broker/).  I'm using this as it's free and doesn't require a sign up, but it is occasionally down.
+Note that I am currently using the Public MQTT Broker described [here](http://www.hivemq.com/showcase/public-mqtt-broker/).  I'm using this as it's free and doesn't require a sign up, but it is occasionally down.  An alternative can be found [here](http://test.mosquitto.org).
 
 This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
