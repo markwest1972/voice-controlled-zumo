@@ -3,6 +3,7 @@
 // -----------------------------------------//
 
 // Copied from https://github.com/rwaldron/johnny-five/wiki/JY-MCU-Bluetooth-Serial-Port-Module-Notes
+// Instructions for using this file can also be found at the above URL.
 
 #define ROBOT_NAME "MarkyBot"
 

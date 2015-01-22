@@ -1,11 +1,20 @@
 ##Summary##
 This project facilitates the control of a Ardunio based Robot via voice commands through a web page.
 
-The project consists of two modules:
+The bulk of this project consists of these two modules:
 - The **arduino_module** subscribes to a MQTT Topic and sends commands onwards to the Zumo via Johnny-Five.
 - The **speech_module** consists of a webserver that (a) serves a web page that parses speech to text and (b) publishes the resulting text to the same MQTT Topic.
 
-Note that I am currently using the Public MQTT Broker described [here](http://www.hivemq.com/showcase/public-mqtt-broker/).  I'm using this as it's free and doesn't require a sign up, but it is occasionally down.
+The other project modules are used for configuration of the Bluetooth module and MQTT Testing.
+
+Note that I am currently using the Public MQTT Broker described [here](http://www.hivemq.com/showcase/public-mqtt-broker/).  I'm using this as it's free and doesn't require a sign up, but it is occasionally down.  An alternative can be found [here](http://test.mosquitto.org).
+
+This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+
+##Further Reading##
+1. [My Blogpost about Google Speech Recognition](http://blogg.bouvet.no/2014/11/11/getting-started-with-html5-speech-recognition-on-google-chrome/).
+2. [My Blogpost about Getting Started with Johnny-Five](http://blogg.bouvet.no/2014/12/30/learning-javascript-and-arduino-programming-with-johnny-five/).
+3. [My Blogpost about This Project] (http://blogg.bouvet.no/2015/01/11/voice-controlling-a-robot-using-arduino-node-js-mqtt-websockets-johnny-five-and-html5-speech-recognition/).
 
 ##Disclaimer##
 I'm new to ALL the technologies used here (including GIT).  If you have suggestions for improvements, they will be gratefully received!
@@ -37,22 +46,28 @@ Johnny-Five, MQTT, Arduino, npm, JavaScript, Google Speech, Zumo.
 
 ##Troubleshooting##
 1. Make sure that the Zumo is connected.
-2. This solution uses a Public MQTT Server, make sure that it is up and running (see the MQTTserver variable in the source code).
-3. If you have problems with the HTTPS Server, try running ** node speech_module/web_server_HTTP.js** instead.
-
-##Further Reading##
-1. [My Blogpost about Google Speech Recognition](http://blogg.bouvet.no/2014/11/11/getting-started-with-html5-speech-recognition-on-google-chrome/).
-2. [My Blogpost about Getting Started with Johnny-Five](http://blogg.bouvet.no/2014/12/30/learning-javascript-and-arduino-programming-with-johnny-five/).
-3. My Blogpost about this project (Coming Soon).
+2. This solution uses a Public MQTT Server, make sure that it is up and running (see the MQTTserver variable in the source code - there are two brokers you can currently choose from).
+3. If you have problems with the HTTPS Server, try running **node speech_module/web_server_HTTP.js** instead.
 
 ##ToDo##
-1. Improve speed of speech recognition.
-2. Add support for systemwide variables.
-3. Add temprature sensor.
-4. Add obstacle detection.
-5. Consider adding a video camera.
-6. Code review.
-7. Improve npm usage.
-8. Feedback to web page.
-9. Pass the Turing Test.
-10. Blog.
+<<<<<<< HEAD
+1. Add support for systemwide variables.
+2. Add temprature sensor.
+3. Add obstacle detection.
+4. Consider adding a video camera.
+5. Code review.
+6. Improve npm usage.
+7. Feedback to web page.
+8. Pass the Turing Test.
+9. Blog.
+=======
+1. Branch version 1.
+2. Start version 2 with a big refactor (based on Code Reviews I have received).
+3. Add temprature sensor with feedback to Webpage.
+4. Add collision detection / onstacle avoidance.
+5. Investigate adding a video camera.
+6. Improve npm usage.
+7. Add "Last Will And Testament" to MQTT Broker so that disconnect pushes "disengage" to robot.
+8. Pass the Turing Test.
+9. "Open the Pod Bay doors Hall".
+>>>>>>> FETCH_HEAD
