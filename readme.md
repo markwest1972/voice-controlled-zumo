@@ -14,7 +14,7 @@ This work is licensed under a <a rel="license" href="http://creativecommons.org/
 ##Further Reading##
 1. [My Blogpost about Google Speech Recognition](http://blogg.bouvet.no/2014/11/11/getting-started-with-html5-speech-recognition-on-google-chrome/).
 2. [My Blogpost about Getting Started with Johnny-Five](http://blogg.bouvet.no/2014/12/30/learning-javascript-and-arduino-programming-with-johnny-five/).
-3. [My Blogpost about This Project] (http://blogg.bouvet.no/2015/01/11/voice-controlling-a-robot-using-arduino-node-js-mqtt-websockets-johnny-five-and-html5-speech-recognition/).
+3. [My Blogpost about This Project](http://blogg.bouvet.no/2015/01/11/voice-controlling-a-robot-using-arduino-node-js-mqtt-websockets-johnny-five-and-html5-speech-recognition/).
 
 ##Disclaimer##
 I'm new to ALL the technologies used here (including GIT).  If you have suggestions for improvements, they will be gratefully received!
@@ -50,17 +50,6 @@ Johnny-Five, MQTT, Arduino, npm, JavaScript, Google Speech, Zumo.
 3. If you have problems with the HTTPS Server, try running **node speech_module/web_server_HTTP.js** instead.
 
 ##ToDo##
-<<<<<<< HEAD
-1. Add support for systemwide variables.
-2. Add temprature sensor.
-3. Add obstacle detection.
-4. Consider adding a video camera.
-5. Code review.
-6. Improve npm usage.
-7. Feedback to web page.
-8. Pass the Turing Test.
-9. Blog.
-=======
 1. Branch version 1.
 2. Start version 2 with a big refactor (based on Code Reviews I have received).
 3. Add temprature sensor with feedback to Webpage.
@@ -70,4 +59,3 @@ Johnny-Five, MQTT, Arduino, npm, JavaScript, Google Speech, Zumo.
 7. Add "Last Will And Testament" to MQTT Broker so that disconnect pushes "disengage" to robot.
 8. Pass the Turing Test.
 9. "Open the Pod Bay doors Hall".
->>>>>>> FETCH_HEAD
