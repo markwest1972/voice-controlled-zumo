@@ -17,7 +17,7 @@ var mqtt = require('mqtt'); // MQTT Client
 // duplicate messages.  "broker.mqtt-dashboard.com" seems to be better, but
 // has occasional downtime.
 var mqttPort = "1883";
-var mqttServer = "broker.mqtt-dashboard.com";
+var mqttServer = "test.mosquitto.org";
 var mqttTopic = "zumo/controller/commands";
 
 // Create a board instance, with serial port connection over Bluetooth.
@@ -133,7 +133,11 @@ board.on("ready", function() {
               console.log("Executing Command ["+command+"].");
             }
             break;
+<<<<<<< Updated upstream
             
+=======
+
+>>>>>>> Stashed changes
           // If command doesn't match any of the above
           default:
 
