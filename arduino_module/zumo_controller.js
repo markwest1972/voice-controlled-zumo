@@ -133,11 +133,7 @@ board.on("ready", function() {
               console.log("Executing Command ["+command+"].");
             }
             break;
-<<<<<<< Updated upstream
-            
-=======
 
->>>>>>> Stashed changes
           // If command doesn't match any of the above
           default:
 
