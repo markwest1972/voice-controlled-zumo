@@ -91,7 +91,7 @@ if (('webkitSpeechRecognition' in window)) {
         // Report error with text code and error image
         errorReport.innerHTML = "Error Code: " + event.error;
         parsingInProgress = false;
-        startImage.src = "images/error.gif";
+        startImage.src = "images/speech_recognition_error.png";
     }
 
     // Triggered on parsing end
@@ -113,7 +113,7 @@ if (('webkitSpeechRecognition' in window)) {
     errorReport.innerHTML = "<br>Speech recognition is not available via this " +
                           "device or browser.";
     parsingInProgress = false;
-    startImage.src = "images/error.gif";
+    startImage.src = "images/speech_recognition_error.png";
 }
 
 function startButton(event) {
@@ -142,6 +142,6 @@ function checkForWebkitSpeechRecognition(){
     errorReport.innerHTML = "<br>Speech recognition is not available via this " +
                           "device or browser.";
     parsingInProgress = false;
-    startImage.src = "images/error.gif";
+    startImage.src = "images/speech_recognition_error.png";
   };
 }
