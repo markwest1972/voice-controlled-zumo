@@ -32,7 +32,7 @@ var mqtt = require('mqtt');
 // duplicate messages.  "broker.mqtt-dashboard.com" seems to be better, but
 // has occasional downtime.
 var mqttPort = "1883";
-var mqttServer = "broker.mqtt-dashboard.com";
+var mqttServer = "test.mosquitto.org";
 var mqttTopic = "zumo/controller/commands";
 var mqttClient = mqtt.createClient(mqttPort, mqttServer);
 

@@ -1,0 +1,73 @@
+body {
+    background-color: black;
+    color: white;
+    font-family:Georgia;
+}
+
+td, tr {
+    vertical-align: top;
+    text-align: center;
+    border:solid white 5px;
+    border-radius: 5px;
+}
+
+.tableWithoutBorder {
+    vertical-align: top;
+    text-align: center;
+    border:none;}
+
+.off {
+  width: 60px;
+  height: 60px;
+  background-color: #F2F2F2;
+  border: none;
+  border-radius: 30px;
+}
+
+.buttonOn {
+  width: 60px;
+  height: 60px;
+  background-color: #FE2E2E;
+  border: none;
+  border-radius: 30px;
+}
+
+.directionOn {
+  width: 60px;
+  height: 60px;
+  background-color: #F3F781;
+  border: none;
+  border-radius: 30px;
+}
+
+.cameraOn {
+  width: 60px;
+  height: 60px;
+  background-color: #58FA82;
+  border: none;
+  border-radius: 30px;
+}
+
+#videoFeed {
+  height: 500px;
+  width: 680px;
+  border: none;
+}
+
+#errorReport {
+  color: red;
+}
+
+#movement {
+  width: 15%;
+}
+
+#camera {
+  width: 40%;
+}
+
+#textSpanHolder {
+  height: 400px;
+  width: 425px;
+  overflow: auto;
+}
