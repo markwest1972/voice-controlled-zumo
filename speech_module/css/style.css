@@ -1,20 +1,43 @@
+/* Specify font used on Webpage */
+
+@font-face {
+ font-family: "terminator";
+ src: url("../fonts/terminator_real_nfi/terminator_real_nfi.ttf") format("truetype");
+}
+
+/* Common styling of standard HTML Elements */
+
 body {
-    background-color: black;
-    color: white;
-    font-family:Georgia;
+  background-color: black;
+  color: white;
+  font-family: 'terminator';
+}
+
+h1, h3 {
+  color: #F3F781;
+  text-align: center;
+}
+
+table {
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 td, tr {
-    vertical-align: top;
-    text-align: center;
-    border:solid white 5px;
-    border-radius: 5px;
+  border:solid white 5px;
+  border-radius: 5px;
+  padding: 10px;
 }
 
+/* Styling of common classes */
+
 .tableWithoutBorder {
-    vertical-align: top;
-    text-align: center;
-    border:none;}
+  vertical-align: top;
+  text-align: center;
+  border: none;
+  padding: 0px;
+}
 
 .off {
   width: 60px;
@@ -24,29 +47,23 @@ td, tr {
   border-radius: 30px;
 }
 
-.buttonOn {
+.on {
   width: 60px;
   height: 60px;
-  background-color: #FE2E2E;
+  background-color: green;
   border: none;
   border-radius: 30px;
 }
 
-.directionOn {
+.speechRecognitionOn {
   width: 60px;
   height: 60px;
-  background-color: #F3F781;
+  background-color: red;
   border: none;
   border-radius: 30px;
 }
 
-.cameraOn {
-  width: 60px;
-  height: 60px;
-  background-color: #58FA82;
-  border: none;
-  border-radius: 30px;
-}
+/* Styling of one off elements */
 
 #videoFeed {
   height: 500px;
@@ -58,16 +75,9 @@ td, tr {
   color: red;
 }
 
-#movement {
-/*  width: 15%;*/
-}
-
-#camera {
-/*  width: 40%;*/
-}
-
 #textSpanHolder {
   height: 400px;
   width: 425px;
   overflow: auto;
+  font-size: small;
 }

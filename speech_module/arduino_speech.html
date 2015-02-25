@@ -9,13 +9,13 @@
 
 <body>
 
-  <h1 align="center">SKYNET SYSTEMS : T-2 DEMO</h1>
+  <h1>SKYNET SYSTEMS : T-2 DEMO</h1>
 
-  <table align="center">
+  <table>
 
     <tr>
-      <td id="recognition">
-        <h2>Speech Recognition</h3>
+      <td>
+        <h3>Speech Recognition</h3>
         <br>
         <button id="startButton" class="off" onclick="startButton(event)">
           <img id="startImage" src="images/speech_recognition.png" alt="Start">
@@ -26,57 +26,60 @@
         <div id="textSpanHolder"><span id="textSpan"></span></div>
       </td>
 
-      <td id="movement">
-        <h2>Movement</h2>
+      <td>
+        <h3>Movement</h3>
         <br>
-          <table align="center">
-            <tr>
-              <td class="tableWithoutBorder"></td>
-              <td class="tableWithoutBorder"><img id="go" class="off" src="images/up.png" alt="Go"></td>
-              <td class="tableWithoutBorder"></td>
-            </tr>
-            <tr>
-              <td class="tableWithoutBorder"><img id="turnLeft" class="off" src="images/left.png" alt="Turn Left"></td>
-              <td class="tableWithoutBorder"><img id="stop" class="off" src="images/stop.png" alt="Stop"></td>
-              <td class="tableWithoutBorder"><img id="turnRight" class="off" src="images/right.png" alt="Turn Right"></td>
-            </tr>
-          </table>
+        <table>
+          <tr>
+            <td class="tableWithoutBorder"></td>
+            <td class="tableWithoutBorder"><img id="go" class="off" src="images/up.png" alt="Go"></td>
+            <td class="tableWithoutBorder"></td>
+          </tr>
+          <tr>
+            <td class="tableWithoutBorder"><img id="turnLeft" class="off" src="images/left.png" alt="Turn Left"></td>
+            <td class="tableWithoutBorder"><img id="stop" class="off" src="images/stop.png" alt="Stop"></td>
+            <td class="tableWithoutBorder"><img id="turnRight" class="off" src="images/right.png" alt="Turn Right"></td>
+          </tr>
+        </table>
         <br>
         <br>
+        <h3>Camera</h3>
         <br>
-        <h2>Camera</h2>
+        <table>
+          <tr>
+            <td class="tableWithoutBorder"></td>
+            <td class="tableWithoutBorder"><img id="tiltUp" class="off" src="images/up.png" alt="Tilt Up"></td>
+            <td class="tableWithoutBorder"></td>
+          </tr>
+          <tr>
+            <td class="tableWithoutBorder"><img id="panLeft" class="off" src="images/left.png" alt="Pan Left"></td>
+            <td class="tableWithoutBorder"><img id="center" class="off" src="images/center.png" alt="Center Camera"></td>
+            <td class="tableWithoutBorder"><img id="panRight" class="off" src="images/right.png" alt="Pan Right"></td>
+          </tr>
+          <tr>
+            <td class="tableWithoutBorder"></td>
+            <td class="tableWithoutBorder"><img id="tiltDown" class="off" src="images/down.png" alt="Tilt Down"></td>
+            <td class="tableWithoutBorder"></td>
+          </tr>
+        </table>
         <br>
-          <table align="center">
-            <tr>
-              <td class="tableWithoutBorder"></td>
-              <td class="tableWithoutBorder"><img id="tiltUp" class="off" src="images/up.png" alt="Tilt Up"></td>
-              <td class="tableWithoutBorder"></td>
-            </tr>
-            <tr>
-              <td class="tableWithoutBorder"><img id="panLeft" class="off" src="images/left.png" alt="Pan Left"></td>
-              <td class="tableWithoutBorder"><img id="center" class="off" src="images/center.png" alt="Center Camera"></td>
-              <td class="tableWithoutBorder"><img id="panRight" class="off" src="images/right.png" alt="Pan Right"></td>
-            </tr>
-            <tr>
-              <td class="tableWithoutBorder"></td>
-              <td class="tableWithoutBorder"><img id="tiltDown" class="off" src="images/down.png" alt="Tilt Down"></td>
-              <td class="tableWithoutBorder"></td>
-            </tr>
-          </table>
+        <table>
+          <tr>
+            <td class="tableWithoutBorder">Pan: 50</td>
+            <td class="tableWithoutBorder">Tilt: 50</td>
+          </tr>
+        </table>
         <br>
       </td>
 
-      <td id="camera">
-        <h2>Camera View</h3>
-        <br>
+      <td>
+        <h3>Video Stream</h3>
         <!--<iframe id="videoFeed" src="http://192.168.0.72:8080/stream_simple.html"></iframe>-->
         <iframe id="videoFeed" src="http://vg.no"></iframe>
       </td>
 
     </tr>
-
   </table>
-
 </body>
 
 <!-- This is in the speech_recognition.js file but doesn't run unless it's here -->

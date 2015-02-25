@@ -34,9 +34,8 @@ if (('webkitSpeechRecognition' in window)) {
         errorReport.innerHTML = "";
 
         // Update image to show recording in progress
-        //startImage.src = "images/stop.gif";
         var startButton = document.getElementById("startButton");
-        startButton.className = "buttonOn";
+        startButton.className = "speechRecognitionOn";
         switchEmOn();
 
     }
@@ -59,13 +58,13 @@ if (('webkitSpeechRecognition' in window)) {
                 // Add latest command to transcript
                 transcript =  "<font color='gray'><i>Sending '" + command +
                               "' to Robot, Last Command Sent was '" +
-                              lastCommand + "'. </i></font><br>" + transcript;
+                              lastCommand + "'. </i></font><br><br>" + transcript;
             }else{
 
                 // Add latest command to transcript
                 transcript =  "<font color='gray'><i>Not sending '" + command +
                               "' to Robot, Last Command Sent was '" +
-                              lastCommand + "'. </i></font><br>" + transcript;
+                              lastCommand + "'. </i></font><br><br>" + transcript;
             }
 
             // Format command dependant on whether it is interim or final
@@ -89,7 +88,7 @@ if (('webkitSpeechRecognition' in window)) {
     recognition.onerror = function(event) {
 
         // Report error with text code and error image
-        errorReport.innerHTML = "Error Code: " + event.error;
+        errorReport.innerHTML = "<br>Error Code: " + event.error;
         parsingInProgress = false;
         startImage.src = "images/speech_recognition_error.png";
     }
@@ -100,7 +99,6 @@ if (('webkitSpeechRecognition' in window)) {
 
         // If no error, reset the button to indicate readiness
         if (errorReport.innerHTML == ""){
-            //startImage.src = "images/start.gif";
             var startButton = document.getElementById("startButton");
             startButton.className = "off";
             switchEmOff();

@@ -11,33 +11,33 @@
 function switchEmOn() {
 
   var go = document.getElementById("go");
-  go.className = "directionOn";
+  go.className = "on";
 
   var turnRight = document.getElementById("turnRight");
-  turnRight.className = "directionOn";
+  turnRight.className = "on";
 
   var turnLeft = document.getElementById("turnLeft");
-  turnLeft.className = "directionOn";
+  turnLeft.className = "on";
 
   var stop = document.getElementById("stop");
-  stop.className = "directionOn";
+  stop.className = "on";
 
   /* -------------------- */
 
   var tiltUp = document.getElementById("tiltUp");
-  tiltUp.className = "cameraOn";
+  tiltUp.className = "on";
 
   var tiltDown = document.getElementById("tiltDown");
-  tiltDown.className = "cameraOn";
+  tiltDown.className = "on";
 
   var panLeft = document.getElementById("panLeft");
-  panLeft.className = "cameraOn";
+  panLeft.className = "on";
 
   var panRight = document.getElementById("panRight");
-  panRight.className = "cameraOn";
+  panRight.className = "on";
 
   var center = document.getElementById("center");
-  center.className = "cameraOn";
+  center.className = "on";
 
 }
 
