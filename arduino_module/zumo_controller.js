@@ -45,10 +45,13 @@ board.on("ready", function() {
   motor1 = new five.Motor([10, 8]);
   motor2 = new five.Motor([9, 7]);
 
+  led = new five.Led(13);
+
   // Add the motors to REPL (useful if the robot needs shutting down)
   board.repl.inject({
     lmotor: motor1,
     rmotor: motor2,
+    led: led
   });
 
   // Connect to the MQTT client connection
@@ -64,6 +67,8 @@ board.on("ready", function() {
 
       // Process incoming messages
       mqttClient.on('message', function(topic, message, packet) {
+
+        led.strobe(250);
 
         if (Boolean(log)){
           console.log("Received Command ["+command+"] from MQTT.");
@@ -92,6 +97,7 @@ board.on("ready", function() {
             if (Boolean(log)){
               console.log("Executing Command ["+command+"].");
             }
+
             break;
 
           // Turning is always done at the same speed
@@ -101,6 +107,7 @@ board.on("ready", function() {
             if (Boolean(log)){
               console.log("Executing Command ["+command+"].");
             }
+
             break;
 
           // Accelerate by increasing current speed by 10, will also interrupt
@@ -112,6 +119,7 @@ board.on("ready", function() {
             if (Boolean(log)){
               console.log("Executing Command ["+command+"], Speed ["+currentSpeed+"].");
             }
+
             break;
 
           // Decelerate by increasing current speed by 10, will also interrupt
@@ -123,6 +131,7 @@ board.on("ready", function() {
             if (Boolean(log)){
               console.log("Executing Command ["+command+"], Speed ["+currentSpeed+"].");
             }
+
             break;
 
           // Full stop.
@@ -132,6 +141,7 @@ board.on("ready", function() {
             if (Boolean(log)){
               console.log("Executing Command ["+command+"].");
             }
+
             break;
 
           // If command doesn't match any of the above
@@ -141,6 +151,7 @@ board.on("ready", function() {
             if (Boolean(log)){
               console.log("Ignoring Command ["+command+"].");
             }
+
           }
         });
     });
