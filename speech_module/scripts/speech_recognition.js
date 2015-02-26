@@ -1,15 +1,12 @@
 /*
-  HTML5 Speech Recognition (and WebSockets communication with Web Server)
-  -----------------------------------------------------------------------
+  HTML5 Speech Recognition
+  ------------------------
 
-  Performs HTML5 Speech Recognition in the browser and sends commands back to
-  the Web Server via WebSockets.
-
-  TODO : Send / Receive MQTT messages directly from here (using WebSockets).
+  Performs HTML5 Speech Recognition in the browser and sends commands to
+  MQTT_handler.js for further processing.
 */
 
 // Declarations
-var socket = io();
 var parsingInProgress = false;
 var transcript = "";
 var lastCommand = "";
@@ -36,8 +33,6 @@ if (('webkitSpeechRecognition' in window)) {
         // Update image to show recording in progress
         var startButton = document.getElementById("startButton");
         startButton.className = "speechRecognitionOn";
-        switchEmOn();
-
     }
 
     // Triggered on return of interim and final results
@@ -53,7 +48,7 @@ if (('webkitSpeechRecognition' in window)) {
             if (command != lastCommand){
 
                 // Send command back to Web Server
-                socket.emit("command", event.results[i][0].transcript);
+                sendToRobot(event.results[i][0].transcript);
 
                 // Add latest command to transcript
                 transcript =  "<font color='gray'><i>Sending '" + command +
@@ -101,7 +96,6 @@ if (('webkitSpeechRecognition' in window)) {
         if (errorReport.innerHTML == ""){
             var startButton = document.getElementById("startButton");
             startButton.className = "off";
-            switchEmOff();
         }
     }
 
