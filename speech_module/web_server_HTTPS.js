@@ -26,8 +26,8 @@ var mqtt = require('mqtt');
 var app = express();
 var fs = require('fs');
 var options = {
-  key: fs.readFileSync('cert/key.pem'),
-  cert: fs.readFileSync('cert/cert.pem'),
+  key: fs.readFileSync('certificate/key.pem'),
+  cert: fs.readFileSync('certificate/cert.pem'),
   requestCert: true
 };
 var server = require('https').createServer(options, app);
