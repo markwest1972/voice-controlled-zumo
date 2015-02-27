@@ -51,7 +51,7 @@ board.on("ready", function() {
   };
   var mqttClient = mqtt.connect(options);
   var mqttSubscribeTopic = "zumo/controller/commands";
-  var mqttPublishTopic = "zumo/controller/response";
+  var mqttPublishTopic = "zumo/controller/responses";
 
   mqttClient.on("connect", function() {
 
@@ -82,7 +82,7 @@ board.on("ready", function() {
             motor2.rev( currentSpeed );
 
             // Return command to Web Browser
-            mqttClient.publish(publishTopic, command);
+            mqttClient.publish(mqttPublishTopic, command);
 
             break;
 
@@ -92,7 +92,7 @@ board.on("ready", function() {
             motor2.rev( SPEED * 0.6 );
 
             // Return command to Web Browser
-            mqttClient.publish(publishTopic, command);
+            mqttClient.publish(mqttPublishTopic, command);
 
             break;
 
@@ -102,7 +102,7 @@ board.on("ready", function() {
             motor2.fwd( SPEED * 0.6 );
 
             // Return command to Web Browser
-            mqttClient.publish(publishTopic, command);
+            mqttClient.publish(mqttPublishTopic, command);
 
             break;
 
@@ -112,7 +112,7 @@ board.on("ready", function() {
             motor2.stop();
 
             // Return command to Web Browser
-            mqttClient.publish(publishTopic, command);
+            mqttClient.publish(mqttPublishTopic, command);
 
             break;
 
