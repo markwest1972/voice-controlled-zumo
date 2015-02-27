@@ -1,11 +1,11 @@
-/*
-  Handles MQTT Communication between Browser and Robot
-  ----------------------------------------------------
-
-  1. Sends commands to the Robot.
-  2. Recieves responses from the Robot and updates webpage.
-
-*/
+/**
+ * Handles MQTT Communication between Browser and Robot
+ *  ----------------------------------------------------
+ *
+ *  1. Sends commands to the Robot.
+ *  2. Recieves responses from the Robot and updates webpage.
+ *
+ */
 var subscribeTopic = "zumo/controller/responses";
 var publishTopic = "zumo/controller/commands";
 

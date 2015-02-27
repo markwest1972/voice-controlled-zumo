@@ -1,10 +1,11 @@
-/*
-  HTML5 Speech Recognition
-  ------------------------
-
-  Performs HTML5 Speech Recognition in the browser and sends commands to
-  MQTT_handler.js for further processing.
-*/
+/**
+ *  HTML5 Speech Recognition
+ *  ------------------------
+ *
+ *  Performs HTML5 Speech Recognition in the browser and sends commands to
+ *  MQTT_handler.js for further processing.
+ *
+ */
 
 // Declarations
 var parsingInProgress = false;

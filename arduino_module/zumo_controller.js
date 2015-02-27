@@ -1,30 +1,22 @@
-/*
-  Zumo Controller
-  ---------------
-
-  This module recieves commands through a public MQTT broker and sends them
-  onwards to the Arduino Zumo Robot via Johnny-Five.
-
-  Run this module with the command "node zumo_controller.js".
-
-*/
+/**
+ *  Zumo Controller
+ *  ---------------
+ *
+ *  This module recieves commands through a public MQTT broker and sends them
+ *  onwards to the Arduino Zumo Robot via Johnny-Five.
+ *
+ *  Run this module with the command "node zumo_controller.js".
+ *
+ */
 
 // Main dependancies
 var five = require("johnny-five"); // JavaScript -> Arduino
-var mqtt = require('mqtt'); // MQTT Client
+var mqtt = require("mqtt"); // MQTT Client
 
-// We are using a public MQTT server, note that "test.mosquitto.org" delivered
-// duplicate messages.  "broker.mqtt-dashboard.com" seems to be better, but
-// has occasional downtime.
-var mqttPort = "1883";
-var mqttServer = "test.mosquitto.org";
-var mqttTopic = "zumo/controller/commands";
-
-// Create a board instance, with serial port connection over Bluetooth.
-// Note that port should be updated to reflect the name of your Bluetooth
-// connect or completely removed if you are using a USB Cable.
+// Create a board instance, with serial port connection over Arduberry.
 var board = new five.Board({
-  port: "/dev/cu.MarkyBot-DevB"
+  //port: "/dev/cu.MarkyBot-DevB"
+  port: "/dev/ttyAMA0"
 });
 
 // On board initialisation, perform the following
@@ -45,8 +37,6 @@ board.on("ready", function() {
   motor1 = new five.Motor([10, 8]);
   motor2 = new five.Motor([9, 7]);
 
-  led = new five.Led(13);
-
   // Add the motors to REPL (useful if the robot needs shutting down)
   board.repl.inject({
     lmotor: motor1,
@@ -55,20 +45,25 @@ board.on("ready", function() {
   });
 
   // Connect to the MQTT client connection
-  var mqttClient = mqtt.createClient(mqttPort, mqttServer);
-  mqttClient.on('connect', function() {
+  var options = {
+    host: "broker.mqttdashboard.com",
+    port: "1883"
+  };
+  var mqttClient = mqtt.connect(options);
+  var mqttSubscribeTopic = "zumo/controller/commands";
+  var mqttPublishTopic = "zumo/controller/response";
+
+  mqttClient.on("connect", function() {
 
     if (Boolean(log)){
       console.log("Connected to MQTT Broker!");
     }
 
     // Subscribe to Zumo Commands
-    mqttClient.subscribe(mqttTopic, function() {
+    mqttClient.subscribe(mqttSubscribeTopic, function() {
 
       // Process incoming messages
-      mqttClient.on('message', function(topic, message, packet) {
-
-        led.strobe(250);
+      mqttClient.on("message", function(topic, message, packet) {
 
         if (Boolean(log)){
           console.log("Received Command ["+command+"] from MQTT.");
@@ -85,52 +80,29 @@ board.on("ready", function() {
             currentSpeed = SPEED;
             motor1.rev( currentSpeed );
             motor2.rev( currentSpeed );
-            if (Boolean(log)){
-              console.log("Executing Command ["+command+"], Speed ["+currentSpeed+"].");
-            }
+
+            // Return command to Web Browser
+            mqttClient.publish(publishTopic, command);
+
             break;
 
           // Turning is always done at the same speed
           case 'turn left':
-            motor1.fwd( SPEED * 0.75 );
-            motor2.rev( SPEED * 0.75 );
-            if (Boolean(log)){
-              console.log("Executing Command ["+command+"].");
-            }
+            motor1.fwd( SPEED * 0.6 );
+            motor2.rev( SPEED * 0.6 );
+
+            // Return command to Web Browser
+            mqttClient.publish(publishTopic, command);
 
             break;
 
           // Turning is always done at the same speed
           case 'turn right':
-            motor1.rev( SPEED * 0.75 );
-            motor2.fwd( SPEED * 0.75 );
-            if (Boolean(log)){
-              console.log("Executing Command ["+command+"].");
-            }
+            motor1.rev( SPEED * 0.6 );
+            motor2.fwd( SPEED * 0.6 );
 
-            break;
-
-          // Accelerate by increasing current speed by 10, will also interrupt
-          // a turn or start motor if already stopped.
-          case 'speed up':
-            currentSpeed += 10;
-            motor1.rev( currentSpeed );
-            motor2.rev( currentSpeed );
-            if (Boolean(log)){
-              console.log("Executing Command ["+command+"], Speed ["+currentSpeed+"].");
-            }
-
-            break;
-
-          // Decelerate by increasing current speed by 10, will also interrupt
-          // a turn or start motor if already stopped.
-          case 'slow down':
-            currentSpeed -= 10;
-            motor1.rev( currentSpeed );
-            motor2.rev( currentSpeed );
-            if (Boolean(log)){
-              console.log("Executing Command ["+command+"], Speed ["+currentSpeed+"].");
-            }
+            // Return command to Web Browser
+            mqttClient.publish(publishTopic, command);
 
             break;
 
@@ -138,9 +110,9 @@ board.on("ready", function() {
           case 'disengage':
             motor1.stop();
             motor2.stop();
-            if (Boolean(log)){
-              console.log("Executing Command ["+command+"].");
-            }
+
+            // Return command to Web Browser
+            mqttClient.publish(publishTopic, command);
 
             break;
 
@@ -156,11 +128,4 @@ board.on("ready", function() {
         });
     });
   });
-
-  // Publish a message (if we wish to send messages elsewhere)
-  //client.publish('zumo/controller', 'my message', function() {
-  //  console.log("Turn Right");
-  //  mqttClient.end(); // Close the connection when published
-  ///});
-
 });

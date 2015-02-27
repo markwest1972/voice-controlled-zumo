@@ -1,17 +1,17 @@
-/*
-  Web Server (HTTP) for Speech Recognition Module
-  -----------------------------------------------
-
-  This file instansiates a Web Server that serves up the HTML page performing
-  speech to text parsing.  The browser then interacts with the Robot via an
-  MQTT broker.
-
-  As we are using HTTP, Google Chrome repeatedly asks for permission to access
-  the microphone.  To avoid this, use the web_server_HTTPS.js file instead.
-
-  Run this Webserver with the command "node web_server_HTTP.js".
-
-*/
+/**
+ *  Web Server (HTTP) for Speech Recognition Module
+ *  -----------------------------------------------
+ *
+ *  This file instansiates a Web Server that serves up the HTML page performing
+ *  speech to text parsing.  The browser then interacts with the Robot via an
+ *  MQTT broker.
+ *
+ *  As we are using HTTP, Google Chrome repeatedly asks for permission to access
+ *  the microphone.  To avoid this, use the web_server_HTTPS.js file instead.
+ *
+ *  Run this Webserver with the command "node web_server_HTTP.js".
+ *
+ */
 
 // Dependancies and declarations
 var express = require('express');
