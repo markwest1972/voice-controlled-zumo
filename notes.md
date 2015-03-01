@@ -2,6 +2,7 @@
 
 ##Commands##
 **IP:** ssh pi@192.168.0.72
+
 **Video Stream:** sudo ./mjpg_streamer -i "./input_uvc.so -y -n -r 640x480" -o "./output_http.so -w ./www”
 
 ##Resources##
