@@ -1,6 +1,6 @@
-##Notes##
+#Notes#
 
-#Commands#
+##Commands##
 
 **IP:** ssh pi@192.168.0.72
 
