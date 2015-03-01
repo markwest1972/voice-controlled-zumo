@@ -6,7 +6,7 @@
 
 **Video Stream:** sudo ./mjpg_streamer -i "./input_uvc.so -y -n -r 640x480" -o "./output_http.so -w ./www”
 
-#Resources#
+##Resources##
 
 http://raspberrypihq.com/how-to-add-wifi-to-the-raspberry-pi - wifi setup
 
@@ -18,11 +18,11 @@ https://www.dexterindustries.com/Arduberry/getting-started/loading-example-sketc
 
 http://wolfpaulus.com/jounal/embedded/raspberrypi_webcam/#comments - streaming webcam
 
-#Other#
+##Other##
 
-/dev/ttyAMA0 : Serial port for Johnny-Five when using Arduberry.
+**/dev/ttyAMA0**: Serial port for Johnny-Five when using Arduberry.
 
-Pan / Tilt - try for 10 degrees, use center to bring camera back, use range to control movement.  Also use VBAT for Power otherwise Raspberry PI resets.
+**Pan / Tilt**: - try for 10 degrees, use center to bring camera back, use range to control movement.  Also use VBAT for Power otherwise Raspberry PI resets.
 
 Pan - Right (45) — Left (135) - Centre (85) - nine grades
 Tilt - Up (35) - Down (125) - Centre (80) -
