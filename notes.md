@@ -14,6 +14,7 @@
 
 ##Other##
 **/dev/ttyAMA0**: Serial port for Johnny-Five when using Arduberry.
+
 **Pan / Tilt**: - try for 10 degrees, use center to bring camera back, use range to control movement.  Also use VBAT for Power otherwise Raspberry PI resets.
 * Pan - (R) 35, 45, 55, 65, 75, (85), 95, 105, 115, 125, 135v(L)
 * Tilt - (U) 45, 55, 65, 75, (85), 95 105, 115, 125 (D)
