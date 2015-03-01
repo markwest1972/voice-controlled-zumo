@@ -16,7 +16,7 @@
       <td>
         <h3>Speech Recognition</h3>
         <br>
-        <button id="startButton" class="off" onclick="startButton(event)">
+        <button id="startButton" class="off" onmousedown="startSpeechRecognition()" onmouseup="stopSpeechRecognition()">
           <img id="startImage" src="images/speech_recognition.png" alt="Start">
         </button>
         <br>
@@ -73,7 +73,8 @@
 
       <td>
         <h3>Video Stream</h3>
-        <iframe id="videoFeed" src="http://192.168.0.72:8080/stream_simple.html"></iframe>
+        <!--<iframe id="videoFeed" src="http://192.168.0.72:8080/stream_simple.html"></iframe>-->
+        <iframe id="videoFeed" src="http:www.vg.no"></iframe>
       </td>
 
     </tr>

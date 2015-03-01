@@ -5,7 +5,7 @@
  src: url("../fonts/terminator_real_nfi/terminator_real_nfi.ttf") format("truetype");
 }
 
-/* Common styling of standard HTML Elements */
+/* Styling of standard HTML Elements */
 
 body {
   background-color: black;
@@ -20,6 +20,7 @@ h1, h3 {
 
 table {
   text-align:center;
+  align:top;
   margin-left:auto;
   margin-right:auto;
 }
@@ -63,7 +64,7 @@ td, tr {
   border-radius: 30px;
 }
 
-/* Styling of one off elements */
+/* Styling of one-off elements */
 
 #videoFeed {
   height: 500px;

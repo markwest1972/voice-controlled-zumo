@@ -3,8 +3,7 @@
  *  ------------------------
  *
  *  Performs HTML5 Speech Recognition in the browser and sends commands to
- *  MQTT_handler.js for further processing.
- *
+ *  the robot (via MQTT_handler.js) for further processing.
  */
 
 // Declarations
@@ -12,10 +11,15 @@ var parsingInProgress = false;
 var transcript = "";
 var lastCommand = "";
 var command = "";
+var recognition;
 
 function checkForWebkitSpeechRecognition(){
 
-  if ((!"webkitSpeechRecognition" in window))
+  if ("webkitSpeechRecognition" in window) {
+    // Do nothing
+  }
+  else{
+
     // Browser doesn't support WebkitSpeechRecognition
     errorReport.innerHTML = "<br>Speech recognition is not available via this " +
                           "device or browser.";
@@ -25,9 +29,9 @@ function checkForWebkitSpeechRecognition(){
 }
 
 // Requires webkitSpeechRecognition.
-if (("webkitSpeechRecognition" in window)) {
+if ("webkitSpeechRecognition" in window) {
 
-  var recognition = new webkitSpeechRecognition();
+  recognition = new webkitSpeechRecognition();
 
   // Are we performing continuous recognition or not?
   // Note : If this is false, we may want to trigger a restart at onend!
@@ -35,6 +39,9 @@ if (("webkitSpeechRecognition" in window)) {
 
   // Do we want interim results or not (true means yes)
   recognition.interimResults = true;
+
+  // English english, none of that colonial nonsense my good man
+  recognition.lang = "en-GB";
 
   // Triggered on start of Voice Recognition attempt
   recognition.onstart = function() {
@@ -98,6 +105,9 @@ if (("webkitSpeechRecognition" in window)) {
     errorReport.innerHTML = "<br>Error Code: " + event.error;
     parsingInProgress = false;
     startImage.src = "images/speech_recognition_error.png";
+
+    // Need to update startbutton class
+    var startButton = document.getElementById("startButton");
     startButton.className = "off";
   }
 
@@ -107,25 +117,19 @@ if (("webkitSpeechRecognition" in window)) {
 
     // If no error, reset the button to indicate readiness
     if (errorReport.innerHTML == ""){
-        var startButton = document.getElementById("startButton");
-        startButton.className = "off";
+
+      // Need to update startbutton class
+      var startButton = document.getElementById("startButton");
+      startButton.className = "off";
     }
   }
 }
 
-function startButton(event) {
-
-  // If start button is clicked while an existing parsing is running, stop
-  // the process.
-  if (parsingInProgress) {
-    recognition.stop();
-    return;
-  }
-
-  // Reset the view of generated text
+function startSpeechRecognition() {
   transcript = "";
-
-  // Use GB English for Speech to Text parsing
-  recognition.lang = "en-GB";
   recognition.start();
+}
+
+function stopSpeechRecognition() {
+  recognition.stop();
 }

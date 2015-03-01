@@ -76,7 +76,7 @@ board.on("ready", function() {
         switch ( command ){
 
           // Go straight forwards.  Also resets speed to standard
-          case 'go':
+          case "go":
             currentSpeed = SPEED;
             motor1.rev( currentSpeed );
             motor2.rev( currentSpeed );
@@ -87,7 +87,7 @@ board.on("ready", function() {
             break;
 
           // Turning is always done at the same speed
-          case 'turn left':
+          case "turn left":
             motor1.fwd( SPEED * 0.6 );
             motor2.rev( SPEED * 0.6 );
 
@@ -97,7 +97,7 @@ board.on("ready", function() {
             break;
 
           // Turning is always done at the same speed
-          case 'turn right':
+          case "turn right":
             motor1.rev( SPEED * 0.6 );
             motor2.fwd( SPEED * 0.6 );
 
@@ -107,7 +107,7 @@ board.on("ready", function() {
             break;
 
           // Full stop.
-          case 'disengage':
+          case "disengage":
             motor1.stop();
             motor2.stop();
 
@@ -123,9 +123,8 @@ board.on("ready", function() {
             if (Boolean(log)){
               console.log("Ignoring Command ["+command+"].");
             }
-
           }
-        });
+      });
     });
   });
 });
