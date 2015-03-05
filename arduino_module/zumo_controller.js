@@ -37,18 +37,40 @@ board.on("ready", function() {
   motor1 = new five.Motor([10, 8]);
   motor2 = new five.Motor([9, 7]);
 
+  // Initialise the two servos used for Camera Pan and Tilt
+  tiltServo = new five.Servo({
+    pin: 11,
+    range: [ 45, 125 ],
+    startAt: 85
+  });
+
+  panServo = new five.Servo({
+    pin: 12,
+    range: [ 45, 135 ],
+    startAt: 90
+  });
+
   // Add the motors to REPL (useful if the robot needs shutting down)
   board.repl.inject({
     lmotor: motor1,
     rmotor: motor2,
-    led: led
+    tilt: tiltServo,
+    pan: panServo
   });
 
   // Connect to the MQTT client connection
+  /*
   var options = {
     host: "broker.mqttdashboard.com",
-    port: "1883"
+    port: "8000"
   };
+  */
+
+  var options = {
+    host: "test.mosquitto.org",
+    port: "8080"
+  };
+
   var mqttClient = mqtt.connect(options);
   var mqttSubscribeTopic = "zumo/controller/commands";
   var mqttPublishTopic = "zumo/controller/responses";

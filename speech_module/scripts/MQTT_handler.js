@@ -9,9 +9,16 @@
 var subscribeTopic = "zumo/controller/responses";
 var publishTopic = "zumo/controller/commands";
 
+/*
 var options = {
   host: "broker.mqttdashboard.com",
   port: "8000"
+};
+*/
+
+var options = {
+  host: "test.mosquitto.org",
+  port: "8080"
 };
 
 var client = mqtt.connect(options);
