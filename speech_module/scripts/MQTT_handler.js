@@ -8,18 +8,8 @@
  */
 var subscribeTopic = "zumo/controller/responses";
 var publishTopic = "zumo/controller/commands";
-
-/*
-var options = {
-  host: "broker.mqttdashboard.com",
-  port: "8000"
-};
-*/
-
-var options = {
-  host: "test.mosquitto.org",
-  port: "8080"
-};
+//var options = { host: "test.mosca.io", port: "80" };
+var options = { host: "broker.mqttdashboard.com", port: "8000" };
 
 var client = mqtt.connect(options);
 
@@ -32,12 +22,19 @@ client.on("message", function(topic, payload) {
   var turnRight = document.getElementById("turnRight");
   var turnLeft = document.getElementById("turnLeft");
   var stop = document.getElementById("stop");
+  var tiltUp = document.getElementById("tiltUp");
+  var tiltDown = document.getElementById("tiltDown");
+  var center = document.getElementById("center");
+  var panLeft = document.getElementById("panLeft");
+  var panRight = document.getElementById("panRight");
 
   // Trim and tidy up response
-  var response = payload.toString().trim();
+  var response = payload.toString().split("|");
+
+  //response = response.substr(0, response.indexOf("[") ).trim();
 
   // Process the response
-  switch ( response ){
+  switch ( response[0].trim() ){
 
     case "go":
       go.className = "on";
@@ -65,6 +62,50 @@ client.on("message", function(topic, payload) {
       turnRight.className = "off";
       turnLeft.className = "off";
       stop.className = "on";
+      break;
+
+    case "camera centre":
+      panLeft.className = "off";
+      panRight.className = "off";
+      tiltUp.className = "off";
+      tiltDown.className = "off";
+      center.className = "on";
+      break;
+
+    case "camera up":
+      panLeft.className = "off";
+      panRight.className = "off";
+      tiltUp.className = "on";
+      tiltDown.className = "off";
+      center.className = "off";
+      tilt.innerHTML = "Tilt:"+response[1].trim()+"%";
+      break;
+
+    case "camera down":
+      panLeft.className = "off";
+      panRight.className = "off";
+      tiltUp.className = "off";
+      tiltDown.className = "on";
+      center.className = "off";
+      tilt.innerHTML = "Tilt:"+response[1].trim()+"%";
+      break;
+
+    case "camera left":
+      panLeft.className = "on";
+      panRight.className = "off";
+      tiltUp.className = "off";
+      tiltDown.className = "off";
+      center.className = "off";
+      pan.innerHTML = "Pan:"+response[1].trim()+"%";
+      break;
+
+    case "camera right":
+      panLeft.className = "off";
+      panRight.className = "on";
+      tiltUp.className = "off";
+      tiltDown.className = "off";
+      center.className = "off";
+      pan.innerHTML = "Pan:"+response[1].trim()+"%";
       break;
     }
 });

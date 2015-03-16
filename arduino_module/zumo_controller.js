@@ -14,72 +14,52 @@ var five = require("johnny-five"); // JavaScript -> Arduino
 var mqtt = require("mqtt"); // MQTT Client
 
 // Create a board instance, with serial port connection over Arduberry.
-var board = new five.Board({
-  //port: "/dev/cu.MarkyBot-DevB"
-  port: "/dev/ttyAMA0"
-});
+var board = new five.Board({ port: "/dev/ttyAMA0" });
 
 // On board initialisation, perform the following
 board.on("ready", function() {
 
-  // Log incoming data if logging is switched on
-  if (Boolean(log)){
-    console.log("Connected to Johnny-Five!");
-  }
+  // Log
+  console.log("Connected to Johnny-Five!");
 
   // Speed can be anything from 0 to 255
-  var SPEED = 75;
-  var currentSpeed = SPEED;
-  var log = true;
+  var SPEED = 80;
+  var PAN = 90;
+  var TILT = 85;
   var command = "";
+  var panState = PAN;
+  var tiltState = TILT;
 
-  // Initialise the two motors attached to the Zumo
-  motor1 = new five.Motor([10, 8]);
-  motor2 = new five.Motor([9, 7]);
+  // Initialise the motors and servos
+  var leftMotor = new five.Motor([11, 8]);
+  var rightMotor = new five.Motor([5, 7]);
+  var tiltServo = new five.Servo({ pin: 2, range: [ 45, 125 ], startAt: 85 });
+  var panServo = new five.Servo({ pin: 4, range: [ 45, 135 ], startAt: 90 });
 
-  // Initialise the two servos used for Camera Pan and Tilt
-  tiltServo = new five.Servo({
-    pin: 11,
-    range: [ 45, 125 ],
-    startAt: 85
-  });
-
-  panServo = new five.Servo({
-    pin: 12,
-    range: [ 45, 135 ],
-    startAt: 90
-  });
-
-  // Add the motors to REPL (useful if the robot needs shutting down)
+  // Set up REPL (used mainly for demo and testing purposes)
   board.repl.inject({
-    lmotor: motor1,
-    rmotor: motor2,
+    left: leftMotor,
+    right: rightMotor,
     tilt: tiltServo,
     pan: panServo
   });
 
-  // Connect to the MQTT client connection
-  /*
-  var options = {
-    host: "broker.mqttdashboard.com",
-    port: "8000"
-  };
-  */
-
-  var options = {
-    host: "test.mosquitto.org",
-    port: "8080"
-  };
-
+  // Set up MQTT Client
+  //var options = { host: "test.mosca.io", port: "1883" };
+  var options = { host: "broker.mqttdashboard.com", port: "1883" };
   var mqttClient = mqtt.connect(options);
   var mqttSubscribeTopic = "zumo/controller/commands";
   var mqttPublishTopic = "zumo/controller/responses";
 
   mqttClient.on("connect", function() {
 
-    if (Boolean(log)){
-      console.log("Connected to MQTT Broker!");
-    }
+    // Log status
+    console.log("Connected to MQTT Broker!");
+
+    // Reset Camera in Web Browser
+    mqttClient.publish(mqttPublishTopic, "camera right|"+ TILT);
+    mqttClient.publish(mqttPublishTopic, "camera up|"+ PAN);
+    mqttClient.publish(mqttPublishTopic, "camera centre");
 
     // Subscribe to Zumo Commands
     mqttClient.subscribe(mqttSubscribeTopic, function() {
@@ -87,9 +67,8 @@ board.on("ready", function() {
       // Process incoming messages
       mqttClient.on("message", function(topic, message, packet) {
 
-        if (Boolean(log)){
-          console.log("Received Command ["+command+"] from MQTT.");
-        }
+        // Log incoming command
+        console.log("Received Command ["+command+"] from MQTT.");
 
         // Trim and tidy up command
         command = message.toString().trim();
@@ -99,9 +78,8 @@ board.on("ready", function() {
 
           // Go straight forwards.  Also resets speed to standard
           case "go":
-            currentSpeed = SPEED;
-            motor1.rev( currentSpeed );
-            motor2.rev( currentSpeed );
+            motor1.rev( SPEED );
+            motor2.rev( SPEED );
 
             // Return command to Web Browser
             mqttClient.publish(mqttPublishTopic, command);
@@ -110,8 +88,8 @@ board.on("ready", function() {
 
           // Turning is always done at the same speed
           case "turn left":
-            motor1.fwd( SPEED * 0.6 );
-            motor2.rev( SPEED * 0.6 );
+            motor1.fwd( SPEED * 0.8 );
+            motor2.rev( SPEED * 0.8 );
 
             // Return command to Web Browser
             mqttClient.publish(mqttPublishTopic, command);
@@ -120,8 +98,8 @@ board.on("ready", function() {
 
           // Turning is always done at the same speed
           case "turn right":
-            motor1.rev( SPEED * 0.6 );
-            motor2.fwd( SPEED * 0.6 );
+            motor1.rev( SPEED * 0.8 );
+            motor2.fwd( SPEED * 0.8 );
 
             // Return command to Web Browser
             mqttClient.publish(mqttPublishTopic, command);
@@ -130,23 +108,64 @@ board.on("ready", function() {
 
           // Full stop.
           case "disengage":
-            motor1.stop();
-            motor2.stop();
+            (five.motors()).stop();
 
             // Return command to Web Browser
             mqttClient.publish(mqttPublishTopic, command);
 
             break;
 
+          case "camera centre"
+
+            pan.to(PAN, 1000, 10);
+            tilt.to(TILT, 1000, 10);
+
+            // Return command to Web Browser
+            mqttClient.publish(mqttPublishTopic, "camera right|"+TILT);
+            mqttClient.publish(mqttPublishTopic, "camera up|"+ PAN);
+            mqttClient.publish(mqttPublishTopic, command);
+
+            break;
+
+          case "camera right"
+            pan.step(-10)
+
+            // Return command to Web Browser
+            mqttClient.publish(mqttPublishTopic, command + "|"+ pan.position());
+
+            break;
+
+          case "camera left"
+            pan.step(10)
+
+            // Return command to Web Browser
+            mqttClient.publish(mqttPublishTopic, command + "|"+ pan.position());
+
+            break;
+
+          case "camera up"
+            tilt.step(-10)
+
+            // Return command to Web Browser
+            mqttClient.publish(mqttPublishTopic, command + "|"+ tilt.position());
+
+            break;
+
+          case "camera down"
+            tilt.step(10)
+
+            // Return command to Web Browser
+            mqttClient.publish(mqttPublishTopic, command + "|"+ tilt.position());
+
+            break;
+
           // If command doesn't match any of the above
           default:
 
-            // Log ignored commands (if logging is switched on)
-            if (Boolean(log)){
-              console.log("Ignoring Command ["+command+"].");
-            }
+            // Log ignored commands
+            console.log("Ignoring Command ["+command+"].");
           }
+        });
       });
-    });
   });
 });
