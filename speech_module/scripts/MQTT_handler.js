@@ -64,48 +64,50 @@ client.on("message", function(topic, payload) {
       stop.className = "on";
       break;
 
-    case "camera centre":
+    case "centre":
       panLeft.className = "off";
       panRight.className = "off";
       tiltUp.className = "off";
       tiltDown.className = "off";
       center.className = "on";
+      pan.innerHTML = "Pan:"+response[1].trim()+" ";
+      tilt.innerHTML = "Tilt:"+response[2].trim()+" ";
       break;
 
-    case "camera up":
+    case "look up":
       panLeft.className = "off";
       panRight.className = "off";
       tiltUp.className = "on";
       tiltDown.className = "off";
       center.className = "off";
-      tilt.innerHTML = "Tilt:"+response[1].trim()+"%";
+      tilt.innerHTML = "Tilt:"+response[1].trim()+" ";
       break;
 
-    case "camera down":
+    case "look down":
       panLeft.className = "off";
       panRight.className = "off";
       tiltUp.className = "off";
       tiltDown.className = "on";
       center.className = "off";
-      tilt.innerHTML = "Tilt:"+response[1].trim()+"%";
+      tilt.innerHTML = "Tilt:"+response[1].trim()+" ";
       break;
 
-    case "camera left":
+    case "look left":
       panLeft.className = "on";
       panRight.className = "off";
       tiltUp.className = "off";
       tiltDown.className = "off";
       center.className = "off";
-      pan.innerHTML = "Pan:"+response[1].trim()+"%";
+      pan.innerHTML = "Pan:"+response[1].trim()+" ";
       break;
 
-    case "camera right":
+    case "look right":
       panLeft.className = "off";
       panRight.className = "on";
       tiltUp.className = "off";
       tiltDown.className = "off";
       center.className = "off";
-      pan.innerHTML = "Pan:"+response[1].trim()+"%";
+      pan.innerHTML = "Pan:"+response[1].trim()+" ";
       break;
     }
 });

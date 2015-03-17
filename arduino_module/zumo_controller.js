@@ -33,8 +33,8 @@ board.on("ready", function() {
   // Initialise the motors and servos
   var leftMotor = new five.Motor([11, 8]);
   var rightMotor = new five.Motor([5, 7]);
-  var tiltServo = new five.Servo({ pin: 2, range: [ 45, 125 ], startAt: 85 });
-  var panServo = new five.Servo({ pin: 4, range: [ 45, 135 ], startAt: 90 });
+  var tiltServo = new five.Servo({ pin: 4, range: [ 45, 125 ], startAt: 85 });
+  var panServo = new five.Servo({ pin: 2, range: [ 45, 135 ], startAt: 90 });
 
   // Set up REPL (used mainly for demo and testing purposes)
   board.repl.inject({
@@ -57,9 +57,7 @@ board.on("ready", function() {
     console.log("Connected to MQTT Broker!");
 
     // Reset Camera in Web Browser
-    mqttClient.publish(mqttPublishTopic, "camera right|"+ TILT);
-    mqttClient.publish(mqttPublishTopic, "camera up|"+ PAN);
-    mqttClient.publish(mqttPublishTopic, "camera centre");
+    mqttClient.publish(mqttPublishTopic, "centre|" + PAN + "|" + TILT);
 
     // Subscribe to Zumo Commands
     mqttClient.subscribe(mqttSubscribeTopic, function() {
@@ -78,9 +76,8 @@ board.on("ready", function() {
 
           // Go straight forwards.  Also resets speed to standard
           case "go":
-            motor1.rev( SPEED );
-            motor2.rev( SPEED );
-
+            leftMotor.rev( SPEED );
+            rightMotor.rev (SPEED );
             // Return command to Web Browser
             mqttClient.publish(mqttPublishTopic, command);
 
@@ -88,8 +85,8 @@ board.on("ready", function() {
 
           // Turning is always done at the same speed
           case "turn left":
-            motor1.fwd( SPEED * 0.8 );
-            motor2.rev( SPEED * 0.8 );
+            leftMotor.fwd( SPEED * 0.5 );
+            rightMotor.rev( SPEED * 0.5 );
 
             // Return command to Web Browser
             mqttClient.publish(mqttPublishTopic, command);
@@ -98,8 +95,8 @@ board.on("ready", function() {
 
           // Turning is always done at the same speed
           case "turn right":
-            motor1.rev( SPEED * 0.8 );
-            motor2.fwd( SPEED * 0.8 );
+            leftMotor.rev( SPEED * 0.5 );
+            rightMotor.fwd( SPEED * 0.5  );
 
             // Return command to Web Browser
             mqttClient.publish(mqttPublishTopic, command);
@@ -108,54 +105,53 @@ board.on("ready", function() {
 
           // Full stop.
           case "disengage":
-            (five.motors()).stop();
+            leftMotor.stop();
+            rightMotor.stop();
 
             // Return command to Web Browser
             mqttClient.publish(mqttPublishTopic, command);
 
             break;
 
-          case "camera centre"
+          case "centre":
 
-            pan.to(PAN, 1000, 10);
-            tilt.to(TILT, 1000, 10);
+            panServo.to(PAN, 1000, 10);
+            tiltServo.to(TILT, 1000, 10);
 
             // Return command to Web Browser
-            mqttClient.publish(mqttPublishTopic, "camera right|"+TILT);
-            mqttClient.publish(mqttPublishTopic, "camera up|"+ PAN);
-            mqttClient.publish(mqttPublishTopic, command);
+            mqttClient.publish(mqttPublishTopic, command + "|"+ PAN + "|"+TILT);
 
             break;
 
-          case "camera right"
-            pan.step(-10)
+          case "look right":
+            panServo.step(-10)
 
             // Return command to Web Browser
-            mqttClient.publish(mqttPublishTopic, command + "|"+ pan.position());
+            mqttClient.publish(mqttPublishTopic, command + "|"+ panServo.position);
 
             break;
 
-          case "camera left"
-            pan.step(10)
+          case "look left":
+            panServo.step(10)
 
             // Return command to Web Browser
-            mqttClient.publish(mqttPublishTopic, command + "|"+ pan.position());
+            mqttClient.publish(mqttPublishTopic, command + "|"+ panServo.position);
 
             break;
 
-          case "camera up"
-            tilt.step(-10)
+          case "look up":
+            tiltServo.step(-10)
 
             // Return command to Web Browser
-            mqttClient.publish(mqttPublishTopic, command + "|"+ tilt.position());
+            mqttClient.publish(mqttPublishTopic, command + "|"+ tiltServo.position);
 
             break;
 
-          case "camera down"
-            tilt.step(10)
+          case "look down":
+            tiltServo.step(10)
 
             // Return command to Web Browser
-            mqttClient.publish(mqttPublishTopic, command + "|"+ tilt.position());
+            mqttClient.publish(mqttPublishTopic, command + "|"+ tiltServo.position);
 
             break;
 
