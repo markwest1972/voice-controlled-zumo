@@ -28,26 +28,26 @@ board.on("ready", function() {
   };*/
 
   // Initialise the two motors attached to the Zumo
-  var leftMotor = new five.Motor([11, 8]);
-  var rightMotor = new five.Motor([5, 7]);
+//  var leftMotor = new five.Motor([11, 8]);
+//  var rightMotor = new five.Motor([5, 7]);
 
   // Initialise the two servos used for Camera Pan and Tilt
 
   var tiltServo = new five.Servo({
-    pin: 4,
+    pin: 3,
     range: [ 45, 125 ],
     startAt: 85
   });
   var panServo = new five.Servo({
-    pin: 2,
+    pin: 5,
     range: [ 45, 135 ],
     startAt: 90
   });
 
   // Add the motors to REPL (useful if the robot needs shutting down)
   board.repl.inject({
-    left: leftMotor,
-    right: rightMotor,
+    //left: leftMotor,
+    //right: rightMotor,
     tilt: tiltServo,
     pan: panServo
   });
