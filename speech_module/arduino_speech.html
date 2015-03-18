@@ -31,9 +31,10 @@
         <table>
           <tr>
             <td class="tableWithoutBorder"></td>
+
             <td class="tableWithoutBorder">
               <button id="goButton" class="off" onmousedown="sendToRobot('go')">
-                <img id="goImage" src="images/up.png" alt="Go">
+                <img id="goImage" src="images/up.png" height="60" width="60" alt="Go">
               </button>
             </td>
             <td class="tableWithoutBorder"></td>
@@ -46,9 +47,17 @@
               </button>
             </td>
 
-            <td class="tableWithoutBorder"><img id="stop" class="off" src="images/stop.png" alt="Stop"></td>
+            <td class="tableWithoutBorder">
+              <button id="stopButton" class="off" onmousedown="sendToRobot('disengage')">
+                <img id="stop" src="images/stop.png" height="60" width="60" alt="Stop">
+              </button>
+            </td>
 
-            <td class="tableWithoutBorder"><img id="turnRight" class="off" src="images/right.png" alt="Turn Right"></td>
+            <td class="tableWithoutBorder">
+              <button id="turnRightButton" class="off" onmousedown="sendToRobot('turn right')">
+                <img id="turnRight" src="images/right.png" height="60" width="60" alt="Turn Right">
+              </button>
+            </td>
 
           </tr>
         </table>
@@ -59,17 +68,44 @@
         <table>
           <tr>
             <td class="tableWithoutBorder"></td>
-            <td class="tableWithoutBorder"><img id="tiltUp" class="off" src="images/up.png" alt="Tilt Up"></td>
+
+            <td class="tableWithoutBorder">
+              <button id="tiltUpButton" class="off" onmousedown="sendToRobot('look up')">
+                <img id="tiltUp" src="images/up.png" height="60" width="60" alt="Tilt Up">
+              </button>
+            </td>
+
             <td class="tableWithoutBorder"></td>
           </tr>
           <tr>
-            <td class="tableWithoutBorder"><img id="panLeft" class="off" src="images/left.png" alt="Pan Left"></td>
-            <td class="tableWithoutBorder"><img id="center" class="off" src="images/center.png" alt="Center Camera"></td>
-            <td class="tableWithoutBorder"><img id="panRight" class="off" src="images/right.png" alt="Pan Right"></td>
+            <td class="tableWithoutBorder">
+              <button id="panLeftButton" class="off" onmousedown="sendToRobot('look left')">
+                <img id="panLeft" src="images/left.png" height="60" width="60" alt="Pan Left">
+              </button>
+            </td>
+
+            <td class="tableWithoutBorder">
+              <button id="centerButton" class="off" onmousedown="sendToRobot('centre')">
+                <img id="center" src="images/center.png" height="60" width="60" alt="Center Camera">
+              </button>
+            </td>
+
+            <td class="tableWithoutBorder">
+              <button id="panRightButton" class="off" onmousedown="sendToRobot('look right')">
+                <img id="panRight" src="images/right.png" height="60" width="60" alt="Pan Right">
+              </button>
+            </td>
+
           </tr>
           <tr>
             <td class="tableWithoutBorder"></td>
-            <td class="tableWithoutBorder"><img id="tiltDown" class="off" src="images/down.png" alt="Tilt Down"></td>
+
+            <td class="tableWithoutBorder">
+              <button id="tiltDownButton" class="off" onmousedown="sendToRobot('look down')">
+                <img id="tiltDown" src="images/down.png" height="60" width="60" alt="Tilt Down">
+              </button>
+            </td>
+
             <td class="tableWithoutBorder"></td>
           </tr>
         </table>

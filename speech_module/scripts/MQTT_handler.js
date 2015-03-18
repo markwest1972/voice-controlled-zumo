@@ -19,14 +19,14 @@ client.on("message", function(topic, payload) {
 
   // List indicators
   var go = document.getElementById("goButton");
-  var turnRight = document.getElementById("turnRight");
+  var turnRight = document.getElementById("turnRightButton");
   var turnLeft = document.getElementById("turnLeftButton");
-  var stop = document.getElementById("stop");
-  var tiltUp = document.getElementById("tiltUp");
-  var tiltDown = document.getElementById("tiltDown");
-  var center = document.getElementById("center");
-  var panLeft = document.getElementById("panLeft");
-  var panRight = document.getElementById("panRight");
+  var stop = document.getElementById("stopButton");
+  var tiltUp = document.getElementById("tiltUpButton");
+  var tiltDown = document.getElementById("tiltDownButton");
+  var center = document.getElementById("centerButton");
+  var panLeft = document.getElementById("panLeftButton");
+  var panRight = document.getElementById("panRightButton");
 
   // Trim and tidy up response
   var response = payload.toString().split("|");
