@@ -31,13 +31,25 @@
         <table>
           <tr>
             <td class="tableWithoutBorder"></td>
-            <td class="tableWithoutBorder"><img id="go" class="off" src="images/up.png" alt="Go"></td>
+            <td class="tableWithoutBorder">
+              <button id="goButton" class="off" onmousedown="sendToRobot('go')">
+                <img id="goImage" src="images/up.png" alt="Go">
+              </button>
+            </td>
             <td class="tableWithoutBorder"></td>
           </tr>
+
           <tr>
-            <td class="tableWithoutBorder"><img id="turnLeft" class="off" src="images/left.png" alt="Turn Left"></td>
+            <td class="tableWithoutBorder">
+              <button id="turnLeftButton" class="off" onmousedown="sendToRobot('turn left')">
+                <img id="turnLeft" src="images/left.png" height="60" width="60" alt="Turn Left">
+              </button>
+            </td>
+
             <td class="tableWithoutBorder"><img id="stop" class="off" src="images/stop.png" alt="Stop"></td>
+
             <td class="tableWithoutBorder"><img id="turnRight" class="off" src="images/right.png" alt="Turn Right"></td>
+
           </tr>
         </table>
         <br>

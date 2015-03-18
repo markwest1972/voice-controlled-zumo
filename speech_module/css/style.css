@@ -46,6 +46,7 @@ td, tr {
   background-color: #F2F2F2;
   border: none;
   border-radius: 30px;
+  padding: 0px;
 }
 
 .on {
@@ -54,9 +55,10 @@ td, tr {
   background-color: green;
   border: none;
   border-radius: 30px;
+  padding: 0px;
 }
 
-.speechRecognitionOn {
+.buttonOn {
   width: 60px;
   height: 60px;
   background-color: red;

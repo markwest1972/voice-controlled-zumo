@@ -18,9 +18,9 @@ client.subscribe(subscribeTopic);
 client.on("message", function(topic, payload) {
 
   // List indicators
-  var go = document.getElementById("go");
+  var go = document.getElementById("goButton");
   var turnRight = document.getElementById("turnRight");
-  var turnLeft = document.getElementById("turnLeft");
+  var turnLeft = document.getElementById("turnLeftButton");
   var stop = document.getElementById("stop");
   var tiltUp = document.getElementById("tiltUp");
   var tiltDown = document.getElementById("tiltDown");

@@ -51,7 +51,7 @@ if ("webkitSpeechRecognition" in window) {
 
     // Update image to show recording in progress
     var startButton = document.getElementById("startButton");
-    startButton.className = "speechRecognitionOn";
+    startButton.className = "buttonOn";
   }
 
   // Triggered on return of interim and final results
