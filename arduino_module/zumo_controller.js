@@ -14,6 +14,7 @@ var five = require("johnny-five"); // JavaScript -> Arduino
 var mqtt = require("mqtt"); // MQTT Client
 
 // Create a board instance, with serial port connection over Arduberry.
+//var board = new five.Board({ port: "/dev/ttyACM0" });
 var board = new five.Board({ port: "/dev/ttyAMA0" });
 
 // On board initialisation, perform the following
@@ -23,9 +24,9 @@ board.on("ready", function() {
   console.log("Connected to Johnny-Five!");
 
   // Speed can be anything from 0 to 255
-  var SPEED = 80;
-  var PAN = 90;
-  var TILT = 85;
+  var SPEED = 130;
+  var PAN = 95;
+  var TILT = 115;
   var command = "";
   var panState = PAN;
   var tiltState = TILT;
@@ -33,8 +34,11 @@ board.on("ready", function() {
   // Initialise the motors and servos
   var leftMotor = new five.Motor([11, 8]);
   var rightMotor = new five.Motor([5, 7]);
-  var tiltServo = new five.Servo({ pin: 4, range: [ 45, 125 ], startAt: 85 });
-  var panServo = new five.Servo({ pin: 2, range: [ 45, 135 ], startAt: 90 });
+  //var leftMotor = new five.Motor([10, 8]);
+  //var rightMotor = new five.Motor([9, 7]);
+
+  var tiltServo = new five.Servo({ pin: 4, range: [ 75, 155 ], startAt: 115 });
+  var panServo = new five.Servo({ pin: 2, range: [ 45, 145 ], startAt: 95 });
 
   // Set up REPL (used mainly for demo and testing purposes)
   board.repl.inject({
