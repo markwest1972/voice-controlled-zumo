@@ -6,5 +6,6 @@
     "express": "*",
     "johnny-five": "*",
     "mqtt": "*",
-    "twitter": "*"}
+    "twitter": "*",
+    "request": "*"  }
 }

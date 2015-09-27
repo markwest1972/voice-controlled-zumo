@@ -117,6 +117,15 @@ board.on("ready", function() {
 
             break;
 
+	  case "stop":
+	    leftMotor.stop();
+            rightMotor.stop();
+
+            // Return command to Web Browser
+            mqttClient.publish(mqttPublishTopic, "disengage");
+ 
+            break;
+
           case "centre":
 
             panServo.to(PAN, 1000, 10);
@@ -131,7 +140,7 @@ board.on("ready", function() {
             panServo.step(-10)
 
             // Return command to Web Browser
-            mqttClient.publish(mqttPublishTopic, command + "|"+ panServo.position);
+            mqttClient.publish(mqttPublishTopic, command + "|"+ Math.round(panServo.position));
 
             break;
 
@@ -139,7 +148,7 @@ board.on("ready", function() {
             panServo.step(10)
 
             // Return command to Web Browser
-            mqttClient.publish(mqttPublishTopic, command + "|"+ panServo.position);
+            mqttClient.publish(mqttPublishTopic, command + "|"+ Math.round(panServo.position));
 
             break;
 
@@ -147,7 +156,7 @@ board.on("ready", function() {
             tiltServo.step(-10)
 
             // Return command to Web Browser
-            mqttClient.publish(mqttPublishTopic, command + "|"+ tiltServo.position);
+            mqttClient.publish(mqttPublishTopic, command + "|"+ Math.round(tiltServo.position));
 
             break;
 
@@ -155,8 +164,17 @@ board.on("ready", function() {
             tiltServo.step(10)
 
             // Return command to Web Browser
-            mqttClient.publish(mqttPublishTopic, command + "|"+ tiltServo.position);
+            mqttClient.publish(mqttPublishTopic, command + "|"+ Math.round(tiltServo.position));
 
+            break;
+           
+          case "tweet":
+	    
+	    var fork = require('child_process').fork;
+            var child = fork('../twitter_module/tweeter.js');
+            
+            mqttClient.publish(mqttPublishTopic, command);
+            
             break;
 
           // If command doesn't match any of the above
