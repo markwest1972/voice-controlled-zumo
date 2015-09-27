@@ -89,7 +89,7 @@ td, tr {
 }
 
 #textSpanHolder {
-  height: 400px;
+  height: 480px;
   width: 500px;
   overflow: auto;
   font-size: small;

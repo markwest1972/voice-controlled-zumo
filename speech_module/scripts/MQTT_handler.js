@@ -27,6 +27,7 @@ client.on("message", function(topic, payload) {
   var center = document.getElementById("centerButton");
   var panLeft = document.getElementById("panLeftButton");
   var panRight = document.getElementById("panRightButton");
+  var tweet = document.getElementById("tweetButton");
 
   // Trim and tidy up response
   var response = payload.toString().split("|");
@@ -117,4 +118,19 @@ client.on("message", function(topic, payload) {
  */
 function sendToRobot(message){
   client.publish(publishTopic, message);
+}
+
+/**
+ * Handles tweet button activation
+ */
+function tweetButtonMouseDown(){
+  tweet.className = "buttonOn";
+  sendToRobot('tweet');
+}
+
+/**
+ * Handles tweet button release
+ */
+function tweetButtonMouseUp(){
+  tweet.className = "buttonOff";
 }

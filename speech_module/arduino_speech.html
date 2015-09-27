@@ -7,7 +7,7 @@
 </head>
 
 <body onload="checkForWebkitSpeechRecognition()">
-
+  <br>
   <h1>SKYNET SYSTEMS : T-2 DEMO</h1>
 
   <table>
@@ -15,7 +15,6 @@
     <tr>
       <td>
         <h3>Speech Recognition</h3>
-
         <br>
         <button id="startButton" class="buttonOff" onmousedown="startSpeechRecognition()" onmouseup="stopSpeechRecognition()">
           <img id="startImage" src="images/speech_recognition.png" alt="Start" height="45" width="45">
@@ -24,12 +23,12 @@
         <span id="errorReport"></span>
         <br>
         <div id="textSpanHolder"><span id="textSpan"></span></div>
+
       </td>
 
       <td>
         <h3>Movement</h3>
-
-        
+        <br>
         <table>
           <tr>
             <td class="tableWithoutBorder"></td>
@@ -64,7 +63,7 @@
           </tr>
 
         </table>
-        <br><br>
+        <br><br><br><br>
         <h3>Camera</h3>
         <br>
         <table >
@@ -113,6 +112,7 @@
           </tr>
         </table>
         <br>
+        <br>
         <table>
           <tr>
             <td class="tableWithoutBorder"><span id="pan">Pan: 0%</span></td>
@@ -122,6 +122,7 @@
           </tr>
         </table>
         <br>
+        <br>
       </td>
 
       <td>
@@ -129,17 +130,13 @@
 
         <!--<iframe id="videoFeed" src="http://192.168.1.62:8080/stream_simple.html"></iframe>-->
         <iframe id="videoFeed" src="http://192.168.0.72:8081"></iframe>
+        <br>
+        <button id="tweetButton" class="buttonOff" onmousedown="tweetButtonMouseDown()" onmouseup="tweetButtonMouseUp()">
+            <img id="tweet" src="images/tweet.png" height="60" width="60" alt="Tweet image snapshot">
+        </button>
+        <br><br>
 
-
-
-<!--        <tr>
-          <button id="tweetButton" class="off" onmousedown="tweet()">
-            <img id="tweet" src="images/tweet.png" height="60" width="60" alt="Tilt Down">
-          </button>
-        </tr>-->
       </td>
     </tr>
-
   </table>
-
 </body>
