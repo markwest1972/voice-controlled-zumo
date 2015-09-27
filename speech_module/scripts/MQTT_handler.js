@@ -70,8 +70,8 @@ client.on("message", function(topic, payload) {
       tiltUp.className = "off";
       tiltDown.className = "off";
       center.className = "on";
-      pan.innerHTML = "Pan:"+response[1].trim()+" ";
-      tilt.innerHTML = "Tilt:"+response[2].trim()+" ";
+      pan.innerHTML = "Pan: "+response[1].trim() + "%";
+      tilt.innerHTML = "Tilt: "+response[2].trim() + "%";
       break;
 
     case "look up":
@@ -80,7 +80,7 @@ client.on("message", function(topic, payload) {
       tiltUp.className = "on";
       tiltDown.className = "off";
       center.className = "off";
-      tilt.innerHTML = "Tilt:"+response[1].trim()+" ";
+      tilt.innerHTML = "Tilt: "+response[1].trim() + "%";
       break;
 
     case "look down":
@@ -89,7 +89,7 @@ client.on("message", function(topic, payload) {
       tiltUp.className = "off";
       tiltDown.className = "on";
       center.className = "off";
-      tilt.innerHTML = "Tilt:"+response[1].trim()+" ";
+      tilt.innerHTML = "Tilt: "+response[1].trim() + "%";
       break;
 
     case "look left":
@@ -98,7 +98,7 @@ client.on("message", function(topic, payload) {
       tiltUp.className = "off";
       tiltDown.className = "off";
       center.className = "off";
-      pan.innerHTML = "Pan:"+response[1].trim()+" ";
+      pan.innerHTML = "Pan: "+response[1].trim() + "%";
       break;
 
     case "look right":
@@ -107,7 +107,7 @@ client.on("message", function(topic, payload) {
       tiltUp.className = "off";
       tiltDown.className = "off";
       center.className = "off";
-      pan.innerHTML = "Pan:"+response[1].trim()+" ";
+      pan.innerHTML = "Pan: "+response[1].trim() + "%";
       break;
     }
 });
