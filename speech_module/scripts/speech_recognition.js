@@ -108,7 +108,7 @@ if ("webkitSpeechRecognition" in window) {
 
     // Need to update startbutton class
     var startButton = document.getElementById("startButton");
-    startButton.className = "off";
+    startButton.className = "buttonOff";
   }
 
   // Triggered on parsing end
@@ -120,7 +120,7 @@ if ("webkitSpeechRecognition" in window) {
 
       // Need to update startbutton class
       var startButton = document.getElementById("startButton");
-      startButton.className = "off";
+      startButton.className = "buttonOff";
     }
   }
 }

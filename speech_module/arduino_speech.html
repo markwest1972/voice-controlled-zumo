@@ -15,9 +15,10 @@
     <tr>
       <td>
         <h3>Speech Recognition</h3>
+
         <br>
-        <button id="startButton" class="off" onmousedown="startSpeechRecognition()" onmouseup="stopSpeechRecognition()">
-          <img id="startImage" src="images/speech_recognition.png" alt="Start">
+        <button id="startButton" class="buttonOff" onmousedown="startSpeechRecognition()" onmouseup="stopSpeechRecognition()">
+          <img id="startImage" src="images/speech_recognition.png" alt="Start" height="45" width="45">
         </button>
         <br>
         <span id="errorReport"></span>
@@ -27,7 +28,8 @@
 
       <td>
         <h3>Movement</h3>
-        <br>
+
+        
         <table>
           <tr>
             <td class="tableWithoutBorder"></td>
@@ -37,9 +39,9 @@
                 <img id="goImage" src="images/up.png" height="60" width="60" alt="Go">
               </button>
             </td>
+
             <td class="tableWithoutBorder"></td>
           </tr>
-
           <tr>
             <td class="tableWithoutBorder">
               <button id="turnLeftButton" class="off" onmousedown="sendToRobot('turn left')">
@@ -60,12 +62,13 @@
             </td>
 
           </tr>
+
         </table>
-        <br>
-        <br>
+        <br><br>
         <h3>Camera</h3>
         <br>
-        <table>
+        <table >
+
           <tr>
             <td class="tableWithoutBorder"></td>
 
@@ -112,9 +115,10 @@
         <br>
         <table>
           <tr>
-            <td class="tableWithoutBorder"><span id="pan">Pan:0%</span></td>
-            <td class="tableWithoutBorder">     </td>
-            <td class="tableWithoutBorder"><span id="tilt">Tilt:0%</span></td>
+            <td class="tableWithoutBorder"><span id="pan">Pan: 0%</span></td>
+          </tr>
+          <tr>
+            <td class="tableWithoutBorder"><span id="tilt">Tilt: 0%</span></td>
           </tr>
         </table>
         <br>
@@ -122,9 +126,20 @@
 
       <td>
         <h3>Video Stream</h3>
-        <iframe id="videoFeed" src="http://192.168.1.62:8080/stream_simple.html"></iframe>
-      </td>
 
+        <!--<iframe id="videoFeed" src="http://192.168.1.62:8080/stream_simple.html"></iframe>-->
+        <iframe id="videoFeed" src="http://192.168.0.72:8081"></iframe>
+
+
+
+<!--        <tr>
+          <button id="tweetButton" class="off" onmousedown="tweet()">
+            <img id="tweet" src="images/tweet.png" height="60" width="60" alt="Tilt Down">
+          </button>
+        </tr>-->
+      </td>
     </tr>
+
   </table>
+
 </body>

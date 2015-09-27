@@ -19,8 +19,8 @@ h1, h3 {
 }
 
 table {
+  vertical-align: top;
   text-align:center;
-  align:top;
   margin-left:auto;
   margin-right:auto;
 }
@@ -64,13 +64,23 @@ td, tr {
   background-color: red;
   border: none;
   border-radius: 30px;
+  padding: 0
+}
+
+.buttonOff {
+  width: 60px;
+  height: 60px;
+  background-color: #F2F2F2;
+  border: none;
+  border-radius: 30px;
+  padding: 0px;
 }
 
 /* Styling of one-off elements */
 
 #videoFeed {
   height: 500px;
-  width: 680px;
+  width: 640px;
   border: none;
 }
 
@@ -80,7 +90,11 @@ td, tr {
 
 #textSpanHolder {
   height: 400px;
-  width: 525px;
+  width: 500px;
   overflow: auto;
   font-size: small;
+}
+
+#manualControls {
+  width: 240px;
 }

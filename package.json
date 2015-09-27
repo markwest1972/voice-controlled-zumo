@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Voice Controlled Arduino",
   "dependencies": {
-    "express": "^5.0.0-alpha.1",
-    "johnny-five": "^0.8.44",
-    "mqtt": "^1.0.10"  }
+    "express": "*",
+    "johnny-five": "*",
+    "mqtt": "*"  }
 }
