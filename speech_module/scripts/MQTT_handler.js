@@ -8,8 +8,9 @@
  */
 var subscribeTopic = "zumo/controller/responses";
 var publishTopic = "zumo/controller/commands";
-//var options = { host: "test.mosca.io", port: "80" };
-var options = { host: "broker.mqttdashboard.com", port: "8000" };
+//var options = { host: "test.mosca.io", port: "80" }; //backup
+var options = { host: "broker.mqttdashboard.com", port: "8000" }; // javaone
+//var options = { host: "192.168.1.72", port: "9001" }; // hotel
 
 var client = mqtt.connect(options);
 
