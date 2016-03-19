@@ -37,8 +37,8 @@ board.on("ready", function() {
   //var leftMotor = new five.Motor([10, 8]);
   //var rightMotor = new five.Motor([9, 7]);
 
-  var tiltServo = new five.Servo({ pin: 4, range: [ 75, 155 ], startAt: 115 });
-  var panServo = new five.Servo({ pin: 2, range: [ 45, 145 ], startAt: 95 });
+  var tiltServo = new five.Servo({ pin: 2, range: [ 75, 155 ], startAt: 115 });
+  var panServo = new five.Servo({ pin: 4, range: [ 45, 145 ], startAt: 95 });
 
   // Set up REPL (used mainly for demo and testing purposes)
   board.repl.inject({
@@ -49,8 +49,12 @@ board.on("ready", function() {
   });
 
   // Set up MQTT Client
-  //var options = { host: "test.mosca.io", port: "1883" };
-  var options = { host: "broker.mqttdashboard.com", port: "1883" };
+  //var options = { host: "test.mosca.io", port: "1883" }; //backup
+  
+  var options = { host: "212.72.74.21", port: "1883" }; 
+  
+  //var options = { host: "localhost", port: "1883" };
+
   var mqttClient = mqtt.connect(options);
   var mqttSubscribeTopic = "zumo/controller/commands";
   var mqttPublishTopic = "zumo/controller/responses";
@@ -80,8 +84,8 @@ board.on("ready", function() {
 
           // Go straight forwards.  Also resets speed to standard
           case "go":
-            leftMotor.rev( SPEED );
-            rightMotor.rev (SPEED );
+            leftMotor.rev( SPEED + 26);
+            rightMotor.rev ( SPEED - 10 );
             // Return command to Web Browser
             mqttClient.publish(mqttPublishTopic, command);
 
@@ -127,6 +131,16 @@ board.on("ready", function() {
             break;
 
           case "centre":
+
+            panServo.to(PAN, 1000, 10);
+            tiltServo.to(TILT, 1000, 10);
+
+            // Return command to Web Browser
+            mqttClient.publish(mqttPublishTopic, command + "|"+ PAN + "|"+TILT);
+
+            break;
+
+          case "center":
 
             panServo.to(PAN, 1000, 10);
             tiltServo.to(TILT, 1000, 10);
