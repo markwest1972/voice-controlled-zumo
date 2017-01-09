@@ -6,3 +6,4 @@ The software and documentation for Version 1.0 of the Robot can be found [here](
 **Version 2.0**
 The Master branch currently contains version 2.0 of the Robot.  This  version utilises a Raspberry PI, and adds WiFi and a USB Web Camera to the Arduino UNO.  There are many differences between version 1.0 and 2.0, for example the socket.io library is removed from version 2.0.  This version of the robot is documented in my [IoT Tech Day talk from 2016](http://www.slideshare.net/markawest/iot-tech-day-coding-mojo-slides-utrecht-april-2016).
 
+This robot is currently dismantled and is no longer under development as of April 2016. 
