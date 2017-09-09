@@ -1,4 +1,4 @@
-#Important!#
+## Important!
 
 **Version 1.0**
 The software and documentation for Version 1.0 of the Robot can be found [here](https://github.com/markwest1972/voice-controlled-zumo/releases/tag/v1.0).  Version 1.0 is a stable release of the Robot based upon an Arduino Uno, Zumo Shield and JCY-MY Bluetooth module.  More information about this release can be found in [this blog post](https://utbrudd.bouvet.no/2015/01/11/voice-controlling-a-robot-using-arduino-node-js-mqtt-websockets-johnny-five-and-html5-speech-recognition/).
